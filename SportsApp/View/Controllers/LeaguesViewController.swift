@@ -6,24 +6,66 @@
 //
 
 import UIKit
-
+import Kingfisher
 class LeaguesViewController: UIViewController {
-
+    
+    var leagueUrl : String?
+    var tableViewResponse : [LeaguesDetails]?
+    
+    @IBOutlet weak var LeaguesTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        var vm = ViewModel()
+        
+        vm.getLeagues(url: leagueUrl!)
+        
+        vm.bindResultToViewController = { () in
+            DispatchQueue.main.async {
+                self.tableViewResponse = vm.newData
+                self.LeaguesTableView.reloadData()
+            }
+           
+        }
+        
+        let nib = UINib(nibName: "TableViewCell", bundle: nil)
+        LeaguesTableView.register(nib, forCellReuseIdentifier: "TableCell")
+        
+        LeaguesTableView.delegate = self
+        LeaguesTableView.dataSource = self
+    
+    }
+}
+extension LeaguesViewController : UITableViewDelegate, UITableViewDataSource
+{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tableViewResponse?.count ?? 0
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let LeaguesTableViewCell = tableView.dequeueReusableCell(withIdentifier: "TableCell", for: indexPath) as! TableViewCell
+        
+        LeaguesTableViewCell.LeagueName.text = tableViewResponse![indexPath.row].league_name
+        
+        LeaguesTableViewCell.LeaugeLogo.kf.setImage(with: URL(string: tableViewResponse![indexPath.row].league_logo ?? ""),placeholder: UIImage(named: "loading"))
+        
+        LeaguesTableViewCell.LeaugeLogo.layer.cornerRadius = 37
+        LeaguesTableViewCell.LeaugeLogo.layer.borderWidth = 5
+        LeaguesTableViewCell.layer.borderColor = UIColor.white.cgColor
+        
+        LeaguesTableViewCell.LeagueName.layer.cornerRadius = 10
+        
+        LeaguesTableViewCell.LeagueName.layer.masksToBounds = true
+        return LeaguesTableViewCell
     }
-    */
-
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 90
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let SecondStoryBoardObj = UIStoryboard(name: "SecondStoryBoard", bundle: nil)
+        let LeagueDetailsObj = SecondStoryBoardObj.instantiateViewController(withIdentifier: "LeagueDetails")
+        LeagueDetailsObj.modalPresentationStyle = .fullScreen
+        self.present(LeagueDetailsObj, animated: true ,completion: nil)
+    }
+    
 }

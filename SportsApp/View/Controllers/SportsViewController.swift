@@ -8,8 +8,11 @@
 import UIKit
 
 class SportsViewController: UIViewController {
+    
     var arrayofimages : [UIImage] = []
     var sportnames : [String] = []
+    var url = ["https://apiv2.allsportsapi.com/football/?met=Leagues&APIkey=148568032f35468a98a5d4df064b2c9a049f7e11aa967c780acd4cc415155277" , "https://apiv2.allsportsapi.com/basketball/?met=Leagues&APIkey=148568032f35468a98a5d4df064b2c9a049f7e11aa967c780acd4cc415155277" , "https://apiv2.allsportsapi.com/cricket/?met=Leagues&APIkey=148568032f35468a98a5d4df064b2c9a049f7e11aa967c780acd4cc415155277" , "https://apiv2.allsportsapi.com/football/?met=Leagues&APIkey=148568032f35468a98a5d4df064b2c9a049f7e11aa967c780acd4cc415155277" , "https://apiv2.allsportsapi.com/basketball/?met=Leagues&APIkey=148568032f35468a98a5d4df064b2c9a049f7e11aa967c780acd4cc415155277" , "https://apiv2.allsportsapi.com/cricket/?met=Leagues&APIkey=148568032f35468a98a5d4df064b2c9a049f7e11aa967c780acd4cc415155277"]
+
     @IBOutlet weak var SportsViewCollection: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +70,7 @@ extension SportsViewController : UICollectionViewDelegate , UICollectionViewData
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let LeaguesViewControllerObj = self.storyboard?.instantiateViewController(withIdentifier: "League") as! LeaguesViewController
+        LeaguesViewControllerObj.leagueUrl = url[indexPath.row]
         self.navigationController?.pushViewController(LeaguesViewControllerObj, animated: true)
     }
-    
 }
