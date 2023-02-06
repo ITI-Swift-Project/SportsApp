@@ -7,6 +7,7 @@
 
 import UIKit
 import Kingfisher
+
 class LeaguesViewController: UIViewController {
     
     var leagueUrl : String?

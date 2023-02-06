@@ -34,6 +34,7 @@ class SportsViewController: UIViewController {
         arrayofimages.append(UIImage(named: "Baseball")!)
         arrayofimages.append(UIImage(named: "Americanfootball")!)
         
+        
         sportnames.append("Football")
         sportnames.append("Basketball")
         sportnames.append("Cricket")
