@@ -11,41 +11,52 @@ class SportsViewController: UIViewController {
     
     var arrayofimages : [UIImage] = []
     var sportnames : [String] = []
-    var url = ["https://apiv2.allsportsapi.com/football/?met=Leagues&APIkey=148568032f35468a98a5d4df064b2c9a049f7e11aa967c780acd4cc415155277" , "https://apiv2.allsportsapi.com/basketball/?met=Leagues&APIkey=148568032f35468a98a5d4df064b2c9a049f7e11aa967c780acd4cc415155277" , "https://apiv2.allsportsapi.com/cricket/?met=Leagues&APIkey=148568032f35468a98a5d4df064b2c9a049f7e11aa967c780acd4cc415155277" , "https://apiv2.allsportsapi.com/football/?met=Leagues&APIkey=148568032f35468a98a5d4df064b2c9a049f7e11aa967c780acd4cc415155277" , "https://apiv2.allsportsapi.com/basketball/?met=Leagues&APIkey=148568032f35468a98a5d4df064b2c9a049f7e11aa967c780acd4cc415155277" , "https://apiv2.allsportsapi.com/cricket/?met=Leagues&APIkey=148568032f35468a98a5d4df064b2c9a049f7e11aa967c780acd4cc415155277"]
-
+    var urlsports : [String] = ["football","basketball","cricket","tennis"]
+    var ApiKey : String = "148568032f35468a98a5d4df064b2c9a049f7e11aa967c780acd4cc415155277"
+   
     @IBOutlet weak var SportsViewCollection: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      /*  let nib = UINib(nibName: "SportsCollectionViewCell", bundle: nil)
-        SportsViewCollection.register(nib, forCellWithReuseIdentifier: "SportsCollectionViewCell")*/
+        
+        let nib = UINib(nibName: "SportsCollectionViewCell", bundle: nil)
+        SportsViewCollection.register(nib, forCellWithReuseIdentifier: "SportsCell")
         
        SportsViewCollection.delegate = self
        SportsViewCollection.dataSource = self
         
         self.navigationItem.title = "Sports"
 
-        navigationController?.navigationBar.prefersLargeTitles = true
+        //navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.barTintColor = UIColor(named: "mycolor")
+    
         
         arrayofimages.append(UIImage(named: "Football")!)
         arrayofimages.append(UIImage(named: "Basketball")!)
         arrayofimages.append(UIImage(named: "Cricket")!)
-        arrayofimages.append(UIImage(named: "Hockey")!)
-        arrayofimages.append(UIImage(named: "Baseball")!)
-        arrayofimages.append(UIImage(named: "Americanfootball")!)
+        arrayofimages.append(UIImage(named: "Tennis")!)
+        
         
         
         sportnames.append("Football")
         sportnames.append("Basketball")
         sportnames.append("Cricket")
-        sportnames.append("Hockey")
-        sportnames.append("Baseball")
-        sportnames.append("American Football")
+        sportnames.append("Tennis")
     }
 }
 
 
-extension SportsViewController : UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout
+extension SportsViewController : UICollectionViewDelegate
+{
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let LeaguesViewControllerObj = self.storyboard?.instantiateViewController(withIdentifier: "League") as! LeaguesViewController
+        LeaguesViewControllerObj.leagueUrl = "https://apiv2.allsportsapi.com/\(urlsports[indexPath.row])/?met=Leagues&APIkey=\(ApiKey)"
+        self.navigationController?.pushViewController(LeaguesViewControllerObj, animated: true)
+    }
+}
+
+
+extension SportsViewController : UICollectionViewDataSource
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return arrayofimages.count
@@ -58,21 +69,25 @@ extension SportsViewController : UICollectionViewDelegate , UICollectionViewData
         SportsCollectionViewCell.SportName.text = sportnames[indexPath.row]
         SportsCollectionViewCell.SportName.layer.cornerRadius = 7
         SportsCollectionViewCell.SportName.layer.masksToBounds = true
-        SportsCollectionViewCell.layer.cornerRadius = 15
-        SportsCollectionViewCell.layer.borderWidth = 5
-        SportsCollectionViewCell.layer.borderColor = UIColor.gray.cgColor
+        SportsCollectionViewCell.layer.cornerRadius = 76
+       // SportsCollectionViewCell.layer.borderWidth = 5
+        SportsCollectionViewCell.layer.borderColor = UIColor(named: "mycolor")?.cgColor
+        SportsCollectionViewCell.layer.shadowColor = UIColor(named: "mycolor")?.cgColor
+        SportsCollectionViewCell.layer.shadowOffset = CGSize(width: 0, height: 0)
+        SportsCollectionViewCell.layer.shadowRadius = 5
+        SportsCollectionViewCell.layer.shadowOpacity = 1
+        SportsCollectionViewCell.layer.masksToBounds = false
         
         return SportsCollectionViewCell
         
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
-    {
-        return CGSize(width: (UIScreen.main.bounds.size.width/2)-35 , height: (UIScreen.main.bounds.height/5))
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let LeaguesViewControllerObj = self.storyboard?.instantiateViewController(withIdentifier: "League") as! LeaguesViewController
-        LeaguesViewControllerObj.leagueUrl = url[indexPath.row]
-        self.navigationController?.pushViewController(LeaguesViewControllerObj, animated: true)
-    }
 }
+
+
+extension SportsViewController :  UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
+     {
+         return CGSize(width: (UIScreen.main.bounds.size.width/2)-35 , height: (UIScreen.main.bounds.height/5))
+     }
+}
+

@@ -37,12 +37,31 @@ class LeaguesViewController: UIViewController {
     
     }
 }
-extension LeaguesViewController : UITableViewDelegate, UITableViewDataSource
+
+
+extension LeaguesViewController : UITableViewDelegate
 {
+   
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let SecondStoryBoardObj = UIStoryboard(name: "SecondStoryBoard", bundle: nil)
+        let LeagueDetailsObj = SecondStoryBoardObj.instantiateViewController(withIdentifier: "LeagueDetails")
+        LeagueDetailsObj.modalPresentationStyle = .fullScreen
+        self.present(LeagueDetailsObj, animated: true ,completion: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 90
+    }
+    
+}
+
+
+extension LeaguesViewController : UITableViewDataSource{
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableViewResponse?.count ?? 0
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let LeaguesTableViewCell = tableView.dequeueReusableCell(withIdentifier: "TableCell", for: indexPath) as! TableViewCell
         
@@ -52,21 +71,10 @@ extension LeaguesViewController : UITableViewDelegate, UITableViewDataSource
         
         LeaguesTableViewCell.LeaugeLogo.layer.cornerRadius = 37
         LeaguesTableViewCell.LeaugeLogo.layer.borderWidth = 5
-        LeaguesTableViewCell.layer.borderColor = UIColor.white.cgColor
-        
+        LeaguesTableViewCell.LeaugeLogo.layer.borderColor = UIColor(named: "mycolor")?.cgColor
         LeaguesTableViewCell.LeagueName.layer.cornerRadius = 10
         
         LeaguesTableViewCell.LeagueName.layer.masksToBounds = true
         return LeaguesTableViewCell
     }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let SecondStoryBoardObj = UIStoryboard(name: "SecondStoryBoard", bundle: nil)
-        let LeagueDetailsObj = SecondStoryBoardObj.instantiateViewController(withIdentifier: "LeagueDetails")
-        LeagueDetailsObj.modalPresentationStyle = .fullScreen
-        self.present(LeagueDetailsObj, animated: true ,completion: nil)
-    }
-    
 }
