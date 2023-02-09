@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class LeagueDetailsViewController: UIViewController {
 
@@ -13,9 +14,17 @@ class LeagueDetailsViewController: UIViewController {
     @IBOutlet weak var LatestResultsCollectionView: UICollectionView!
     @IBOutlet weak var TeamsCollectionView: UICollectionView!
     
+    var viewModel : ViewModel?
+    var upcomingEventsArray : [UpcomingEvent]?
+    var latestReultsArray : [LatestResult]?
+    var teamsArray : [Team]?
+    var sportName : String?
+    var leagueID : Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("sport : \(sportName ?? "football") , \(leagueID ?? 4 ) \n")
 
         UpcomingEventsCollectionView.delegate = self
         UpcomingEventsCollectionView.dataSource = self
@@ -33,16 +42,52 @@ class LeagueDetailsViewController: UIViewController {
         
         TeamsCollectionView.register(TeamCollectionViewCell.nib(), forCellWithReuseIdentifier: "TeamCollectionViewCell")
         
+        viewModel = ViewModel()
+        
+        viewModel?.getUpcomingEventsData(sportName: sportName ?? "football" , leagueID: leagueID ?? 4)
+        viewModel?.getLatestEventsData(sportName: sportName ?? "football" , leagueID: leagueID ?? 4)
+        viewModel?.getTeamsData(sportName: sportName ?? "football" , leagueID: leagueID ?? 4)
+        viewModel?.bindUpcoimgEventsResultToLeaguesDetailsViewController = { () in
+            self.renderUpcomingEventsCollectionView()
+        }
+        viewModel?.bindLatestResultsToLeaguesDetailsViewController = { () in
+            self.renderLatestEventsCollectionView()
+        }
+        viewModel?.bindTeamsDataResultToLeaguesDetailsViewController = { () in
+            self.renderTeamsCollectionView()
+        }
+        
     }
     
-
+   
     
-    // MARK: - Navigation
-
-
+    
+    // MARK: - Rendring View For Collections' Views
+    func renderUpcomingEventsCollectionView() {
+        DispatchQueue.main.async {
+            self.upcomingEventsArray = self.viewModel?.upcomingEventsResult ?? []
+           self.UpcomingEventsCollectionView.reloadData()
+        }
+    }
+    
+    func renderLatestEventsCollectionView() {
+        DispatchQueue.main.async {
+            self.latestReultsArray = self.viewModel?.latestEventsResult ?? []
+            self.LatestResultsCollectionView.reloadData()
+        }
+    }
+    
+    func renderTeamsCollectionView() {
+        DispatchQueue.main.async {
+            self.teamsArray = self.viewModel?.teamsDataResult ?? []
+            self.TeamsCollectionView.reloadData()
+        }
+    }
 
 }
 
+
+    // MARK: - Collections' Views Protocols
 extension LeagueDetailsViewController : UICollectionViewDelegate {
     
     
@@ -52,48 +97,68 @@ extension LeagueDetailsViewController : UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 20
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        if collectionView == self.UpcomingEventsCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UpcomingEventsCollectionViewCell", for: indexPath) as! UpcomingEventsCollectionViewCell
+        switch collectionView {
             
-//            cell.upcomingEventAwayTeamImageView.image = UIImage(systemName: "sportscourt.circle.fill")
-//            cell.upcomingEventHomeTeamImageView.image = UIImage(systemName: "soccerball")
-            
-            return cell
-            
-        } else if collectionView == self.LatestResultsCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LatestResultCollectionViewCell", for: indexPath) as! LatestResultCollectionViewCell
-            
-            cell.eventHomeTeamImageView.image = UIImage(systemName: "sportscourt.circle.fill")
-            cell.eventAwayTeamImageView.image = UIImage(systemName: "soccerball")
-            
-            return cell
-            
-        } else {
-            
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeamCollectionViewCell", for: indexPath) as! TeamCollectionViewCell
-            cell.teamImageView.image = UIImage(systemName: "soccerball")
-            
-            return cell
+        case UpcomingEventsCollectionView :
+            return upcomingEventsArray?.count ?? 0
+        case LatestResultsCollectionView :
+            return latestReultsArray?.count ?? 0
+        case TeamsCollectionView :
+            return teamsArray?.count ?? 0
+        default :
+            return 0
         }
         
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        switch collectionView {
+        case UpcomingEventsCollectionView :
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UpcomingEventsCollectionViewCell", for: indexPath) as! UpcomingEventsCollectionViewCell
+            
+            cell.upcomingEventHomeTeamImageView.kf.setImage(with: URL(string: upcomingEventsArray?[indexPath.row].home_team_logo ?? ""),placeholder: UIImage(systemName:"slowmo"))
+            cell.upcomingEventAwayTeamImageView.kf.setImage(with: URL(string: upcomingEventsArray?[indexPath.row].away_team_logo ?? ""),placeholder: UIImage(systemName:"slowmo"))
+            cell.upcomingEventHomeTeamNameLabel.text = upcomingEventsArray?[indexPath.row].event_home_team
+            cell.upcomingEventAwayTeamNameLabel.text = upcomingEventsArray?[indexPath.row].event_away_team
+            cell.upcomingEventDateLabel.text = upcomingEventsArray?[indexPath.row].event_date
+            cell.upcomingEventTimeLabel.text = upcomingEventsArray?[indexPath.row].event_time
+            return cell
+            
+        case LatestResultsCollectionView :
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LatestResultCollectionViewCell", for: indexPath) as! LatestResultCollectionViewCell
+            cell.eventHomeTeamImageView.kf.setImage(with: URL(string:latestReultsArray?[indexPath.row].home_team_logo ?? "" ),placeholder: UIImage(systemName:"slowmo"))
+            cell.eventAwayTeamImageView.kf.setImage(with: URL(string:latestReultsArray?[indexPath.row].away_team_logo ?? "" ),placeholder: UIImage(systemName:"slowmo"))
+            cell.eventHomeTeamNameLabel.text = latestReultsArray?[indexPath.row].event_home_team
+            cell.eventAwayTeamNameLabel.text = latestReultsArray?[indexPath.row].event_away_team
+            cell.eventFinalResultLabel.text = latestReultsArray?[indexPath.row].event_final_result
+            return cell
+            
+        case TeamsCollectionView :
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeamCollectionViewCell", for: indexPath) as! TeamCollectionViewCell
+            cell.teamImageView.kf.setImage(with: URL(string:teamsArray?[indexPath.row].team_logo ?? "" ),placeholder: UIImage(systemName:"slowmo"))
+            return cell
+            
+        default:
+            return UICollectionViewCell()
+        }
+    }
 }
 
 extension LeagueDetailsViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if collectionView == self.UpcomingEventsCollectionView {
+        switch collectionView {
+        case UpcomingEventsCollectionView :
             return CGSize(width: 360, height: 112)
-        }else if collectionView == self.LatestResultsCollectionView {
+        case LatestResultsCollectionView :
             return CGSize(width: 360, height: 112)
-        }else{
+        case TeamsCollectionView :
             return CGSize(width: 112, height: 112)
+        default :
+            return CGSize()
         }
     }
 }
