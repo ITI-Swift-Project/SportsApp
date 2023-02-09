@@ -11,6 +11,7 @@ import Kingfisher
 class LeaguesViewController: UIViewController {
     
     var leagueUrl : String?
+    var sporName : String?
     var tableViewResponse : [LeaguesDetails]?
     
     @IBOutlet weak var LeaguesTableView: UITableView!
@@ -44,7 +45,11 @@ extension LeaguesViewController : UITableViewDelegate
    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let SecondStoryBoardObj = UIStoryboard(name: "SecondStoryBoard", bundle: nil)
-        let LeagueDetailsObj = SecondStoryBoardObj.instantiateViewController(withIdentifier: "LeagueDetails")
+        let LeagueDetailsObj = SecondStoryBoardObj.instantiateViewController(withIdentifier: "LeagueDetails") as! LeagueDetailsViewController
+       
+        LeagueDetailsObj.leagueID = tableViewResponse?[indexPath.row].league_key
+        LeagueDetailsObj.sportName = self.sporName
+                
         LeagueDetailsObj.modalPresentationStyle = .fullScreen
         self.present(LeagueDetailsObj, animated: true ,completion: nil)
     }
