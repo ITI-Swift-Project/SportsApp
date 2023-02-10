@@ -14,7 +14,7 @@ var APIKey = "148568032f35468a98a5d4df064b2c9a049f7e11aa967c780acd4cc415155277"
 
 protocol LeagueService
 {
-  static  func fetchData(url : String, completionHandler : @escaping (Leagues?)->Void)
+  static  func fetchLeagueViewController(url : String, completionHandler : @escaping (Leagues?)->Void)
 }
 
 protocol UpcomingData {
@@ -31,7 +31,7 @@ protocol TeamsData {
 
 class ApiData : LeagueService
 {
-    static  func fetchData(url: String, completionHandler: @escaping (Leagues?) -> Void) {
+    static  func fetchLeagueViewController(url: String, completionHandler: @escaping (Leagues?) -> Void) {
         let request = AF.request(url)
         request.responseDecodable(of: Leagues.self) { (data) in
             guard let newdata = data.value else{
