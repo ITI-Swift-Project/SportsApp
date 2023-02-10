@@ -20,7 +20,7 @@ class ViewModel
     
     func getLeagues (url : String)
     {
-        ApiData.fetchData(url:url ,completionHandler: { result in
+        ApiData.fetchLeagueViewController(url:url ,completionHandler: { result in
             self.newData = result?.result
         })
         

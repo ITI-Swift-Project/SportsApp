@@ -56,20 +56,25 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="16" minY="100" maxX="16" maxY="100"/>
                                 </collectionViewFlowLayout>
+                                <imageView key="backgroundView" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="aNv-Kn-DOf">
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="693"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
                                 <cells/>
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="9kA-sd-XNV"/>
                         <color key="backgroundColor" red="0.74901960779999999" green="0.76470588240000004" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="yKd-b8-BNf" firstAttribute="width" secondItem="LmV-yh-yp4" secondAttribute="width" multiplier="0.906977" id="DCw-L0-Q4B"/>
-                            <constraint firstItem="yKd-b8-BNf" firstAttribute="height" secondItem="LmV-yh-yp4" secondAttribute="height" multiplier="0.743562" id="PB5-N6-VvH"/>
-                            <constraint firstItem="yKd-b8-BNf" firstAttribute="centerY" secondItem="LmV-yh-yp4" secondAttribute="centerY" id="Ylr-DX-WV6"/>
-                            <constraint firstItem="yKd-b8-BNf" firstAttribute="centerX" secondItem="LmV-yh-yp4" secondAttribute="centerX" id="jBO-jD-p2C"/>
+                            <constraint firstItem="yKd-b8-BNf" firstAttribute="height" secondItem="LmV-yh-yp4" secondAttribute="height" multiplier="0.743562" id="S39-Hr-H6O"/>
+                            <constraint firstItem="yKd-b8-BNf" firstAttribute="width" secondItem="LmV-yh-yp4" secondAttribute="width" multiplier="0.906977" id="TgX-JY-jWx"/>
+                            <constraint firstItem="yKd-b8-BNf" firstAttribute="centerY" secondItem="LmV-yh-yp4" secondAttribute="centerY" id="dVd-LX-m9w"/>
+                            <constraint firstItem="yKd-b8-BNf" firstAttribute="centerX" secondItem="LmV-yh-yp4" secondAttribute="centerX" id="vfM-yz-sM9"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Sports" id="II3-Zb-S9w"/>
                     <connections>
+                        <outlet property="CollectionViewBackground" destination="aNv-Kn-DOf" id="D3a-N1-EDk"/>
                         <outlet property="SportsViewCollection" destination="yKd-b8-BNf" id="yfi-2q-Dcq"/>
                     </connections>
                 </viewController>
