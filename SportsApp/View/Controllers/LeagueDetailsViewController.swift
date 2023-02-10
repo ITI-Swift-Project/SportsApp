@@ -118,8 +118,8 @@ extension LeagueDetailsViewController : UICollectionViewDataSource {
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UpcomingEventsCollectionViewCell", for: indexPath) as! UpcomingEventsCollectionViewCell
             
-            cell.upcomingEventHomeTeamImageView.kf.setImage(with: URL(string: upcomingEventsArray?[indexPath.row].home_team_logo ?? ""),placeholder: UIImage(systemName:"slowmo"))
-            cell.upcomingEventAwayTeamImageView.kf.setImage(with: URL(string: upcomingEventsArray?[indexPath.row].away_team_logo ?? ""),placeholder: UIImage(systemName:"slowmo"))
+          //  cell.upcomingEventHomeTeamImageView.kf.setImage(with: URL(string: upcomingEventsArray?[indexPath.row].home_team_logo ?? ""),placeholder: UIImage(systemName:"slowmo"))
+         //   cell.upcomingEventAwayTeamImageView.kf.setImage(with: URL(string: upcomingEventsArray?[indexPath.row].away_team_logo ?? ""),placeholder: UIImage(systemName:"slowmo"))
             cell.upcomingEventHomeTeamNameLabel.text = upcomingEventsArray?[indexPath.row].event_home_team
             cell.upcomingEventAwayTeamNameLabel.text = upcomingEventsArray?[indexPath.row].event_away_team
             cell.upcomingEventDateLabel.text = upcomingEventsArray?[indexPath.row].event_date

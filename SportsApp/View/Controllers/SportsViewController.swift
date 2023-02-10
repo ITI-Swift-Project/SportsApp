@@ -12,7 +12,6 @@ class SportsViewController: UIViewController {
     var arrayofimages : [UIImage] = []
     var sportnames : [String] = []
     var urlsports : [String] = ["football","basketball","cricket","tennis"]
-    var ApiKey : String = "148568032f35468a98a5d4df064b2c9a049f7e11aa967c780acd4cc415155277"
    
     @IBOutlet weak var SportsViewCollection: UICollectionView!
     
@@ -50,8 +49,8 @@ extension SportsViewController : UICollectionViewDelegate
 {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let LeaguesViewControllerObj = self.storyboard?.instantiateViewController(withIdentifier: "League") as! LeaguesViewController
-        LeaguesViewControllerObj.leagueUrl = "https://apiv2.allsportsapi.com/\(urlsports[indexPath.row])/?met=Leagues&APIkey=\(ApiKey)"
-        //passing sport name to the other views and i don't if it the right way to do that ? 
+        LeaguesViewControllerObj.leagueUrl = "https://apiv2.allsportsapi.com/\(urlsports[indexPath.row])/?met=Leagues&APIkey=\(APIKey)"
+        //passing sport name to the other views and i don't know if it the right way to do that ?
         LeaguesViewControllerObj.sporName = urlsports[indexPath.row]
         self.navigationController?.pushViewController(LeaguesViewControllerObj, animated: true)
     }
