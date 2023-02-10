@@ -52,6 +52,8 @@ extension LeaguesViewController : UITableViewDelegate
                 
         LeagueDetailsObj.modalPresentationStyle = .fullScreen
         self.present(LeagueDetailsObj, animated: true ,completion: nil)
+        
+        //self.dismiss(animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -78,7 +80,6 @@ extension LeaguesViewController : UITableViewDataSource{
         LeaguesTableViewCell.LeaugeLogo.layer.borderWidth = 5
         LeaguesTableViewCell.LeaugeLogo.layer.borderColor = UIColor(named: "mycolor")?.cgColor
         LeaguesTableViewCell.LeagueName.layer.cornerRadius = 10
-        
         LeaguesTableViewCell.LeagueName.layer.masksToBounds = true
         return LeaguesTableViewCell
     }

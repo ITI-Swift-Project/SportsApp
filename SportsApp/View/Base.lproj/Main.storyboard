@@ -50,15 +50,18 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yKd-b8-BNf">
                                 <rect key="frame" x="20" y="119.66666666666669" width="390" height="693"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="90" minimumInteritemSpacing="20" id="tbq-fC-4a7">
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tbq-fC-4a7">
                                     <size key="itemSize" width="169" height="158"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="16" minY="100" maxX="16" maxY="100"/>
+                                    <inset key="sectionInset" minX="24" minY="165" maxX="24" maxY="165"/>
                                 </collectionViewFlowLayout>
                                 <imageView key="backgroundView" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="aNv-Kn-DOf">
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="693"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="aNv-Kn-DOf" secondAttribute="height" multiplier="130:231" id="E3T-ZV-0hV"/>
+                                    </constraints>
                                 </imageView>
                                 <cells/>
                             </collectionView>
@@ -66,6 +69,9 @@
                         <viewLayoutGuide key="safeArea" id="9kA-sd-XNV"/>
                         <color key="backgroundColor" red="0.74901960779999999" green="0.76470588240000004" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="aNv-Kn-DOf" firstAttribute="leading" secondItem="9kA-sd-XNV" secondAttribute="leading" constant="20" id="0mg-Xt-RrV"/>
+                            <constraint firstItem="aNv-Kn-DOf" firstAttribute="top" secondItem="9kA-sd-XNV" secondAttribute="top" constant="16.666666666666686" id="IvS-Js-XqW"/>
+                            <constraint firstItem="9kA-sd-XNV" firstAttribute="trailing" secondItem="aNv-Kn-DOf" secondAttribute="trailing" constant="20" id="QtZ-xz-ScQ"/>
                             <constraint firstItem="yKd-b8-BNf" firstAttribute="height" secondItem="LmV-yh-yp4" secondAttribute="height" multiplier="0.743562" id="S39-Hr-H6O"/>
                             <constraint firstItem="yKd-b8-BNf" firstAttribute="width" secondItem="LmV-yh-yp4" secondAttribute="width" multiplier="0.906977" id="TgX-JY-jWx"/>
                             <constraint firstItem="yKd-b8-BNf" firstAttribute="centerY" secondItem="LmV-yh-yp4" secondAttribute="centerY" id="dVd-LX-m9w"/>
@@ -100,22 +106,15 @@
                                     <outlet property="delegate" destination="xPx-l5-hUj" id="rRs-Mz-J4B"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LQV-mB-zjj">
-                                <rect key="frame" x="0.0" y="111" width="430" height="54"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.74901960779999999" green="0.76470588240000004" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ruu-lz-rsD"/>
                         <color key="backgroundColor" red="0.74901960784313726" green="0.76470588235294112" blue="0.72941176470588232" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Bfo-7g-lVY" firstAttribute="centerX" secondItem="aPB-jn-FA4" secondAttribute="centerX" id="C3z-Pu-zOn"/>
-                            <constraint firstItem="Bfo-7g-lVY" firstAttribute="width" secondItem="aPB-jn-FA4" secondAttribute="width" id="QJD-7H-qJr"/>
-                            <constraint firstItem="Bfo-7g-lVY" firstAttribute="height" secondItem="aPB-jn-FA4" secondAttribute="height" multiplier="0.703863" id="Y9U-ZM-NFM"/>
-                            <constraint firstItem="Bfo-7g-lVY" firstAttribute="centerY" secondItem="aPB-jn-FA4" secondAttribute="centerY" id="loN-EL-k1T"/>
+                            <constraint firstItem="Bfo-7g-lVY" firstAttribute="height" secondItem="aPB-jn-FA4" secondAttribute="height" multiplier="0.703863" id="Dso-uJ-5Q3"/>
+                            <constraint firstItem="Bfo-7g-lVY" firstAttribute="centerY" secondItem="aPB-jn-FA4" secondAttribute="centerY" id="cDP-5m-dur"/>
+                            <constraint firstItem="Bfo-7g-lVY" firstAttribute="centerX" secondItem="aPB-jn-FA4" secondAttribute="centerX" id="ecZ-KY-dt1"/>
+                            <constraint firstItem="Bfo-7g-lVY" firstAttribute="top" secondItem="ruu-lz-rsD" secondAttribute="top" constant="35" id="qBa-Ht-WhG"/>
+                            <constraint firstItem="Bfo-7g-lVY" firstAttribute="width" secondItem="aPB-jn-FA4" secondAttribute="width" id="xaG-lb-fzX"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wcU-IO-Nsx"/>
