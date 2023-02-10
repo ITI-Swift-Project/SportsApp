@@ -16,6 +16,7 @@ class SportsViewController: UIViewController {
    
     @IBOutlet weak var SportsViewCollection: UICollectionView!
     
+    @IBOutlet weak var CollectionViewBackground: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,11 +38,12 @@ class SportsViewController: UIViewController {
         arrayofimages.append(UIImage(named: "Tennis")!)
         
         
-        
         sportnames.append("Football")
         sportnames.append("Basketball")
         sportnames.append("Cricket")
         sportnames.append("Tennis")
+        
+        CollectionViewBackground.image = UIImage(named: "Sports")
     }
 }
 
@@ -70,8 +72,6 @@ extension SportsViewController : UICollectionViewDataSource
         SportsCollectionViewCell.SportName.layer.cornerRadius = 7
         SportsCollectionViewCell.SportName.layer.masksToBounds = true
         SportsCollectionViewCell.layer.cornerRadius = 76
-       // SportsCollectionViewCell.layer.borderWidth = 5
-        SportsCollectionViewCell.layer.borderColor = UIColor(named: "mycolor")?.cgColor
         SportsCollectionViewCell.layer.shadowColor = UIColor(named: "mycolor")?.cgColor
         SportsCollectionViewCell.layer.shadowOffset = CGSize(width: 0, height: 0)
         SportsCollectionViewCell.layer.shadowRadius = 5

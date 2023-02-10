@@ -9,12 +9,12 @@ import Foundation
 import Alamofire
 protocol LeagueService
 {
-  static  func fetchData(url : String, completionHandler : @escaping (Leagues?)->Void)
+  static  func fetchLeagueViewController(url : String, completionHandler : @escaping (Leagues?)->Void)
 }
 
 class ApiData : LeagueService
 {
-    static  func fetchData(url: String, completionHandler: @escaping (Leagues?) -> Void) {
+    static  func fetchLeagueViewController(url: String, completionHandler: @escaping (Leagues?) -> Void) {
         let request = AF.request(url)
         request.responseDecodable(of: Leagues.self) { (data) in
             guard let newdata = data.value else{
