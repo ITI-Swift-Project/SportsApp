@@ -18,7 +18,7 @@ class LeaguesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var viewmodel = ViewModel()
+        let viewmodel = ViewModel()
         
         viewmodel.getLeagues(url: leagueUrl!)
         
@@ -49,11 +49,15 @@ extension LeaguesViewController : UITableViewDelegate
        
         LeagueDetailsObj.leagueID = tableViewResponse?[indexPath.row].league_key
         LeagueDetailsObj.sportName = self.sporName
-                
-        LeagueDetailsObj.modalPresentationStyle = .fullScreen
-        self.present(LeagueDetailsObj, animated: true ,completion: nil)
-        
-        //self.dismiss(animated: true, completion: nil)
+        LeagueDetailsObj.leagueName = tableViewResponse?[indexPath.row].league_name ?? ""
+        LeagueDetailsObj.leagueData?.league_logo = tableViewResponse?[indexPath.row].league_logo ?? ""
+        LeagueDetailsObj.leagueData?.league_name =  tableViewResponse?[indexPath.row].league_name ?? ""
+        LeagueDetailsObj.leagueData?.league_key = tableViewResponse![indexPath.row].league_key ?? 0
+        let navController = UINavigationController(rootViewController: LeagueDetailsObj)
+        navController.modalPresentationStyle = .fullScreen
+        self.present(navController, animated: true ,completion: nil)
+
+      
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -67,6 +67,50 @@ class ViewModel
             self.teamsDataResult = result?.result
         }
     }
+    
+    //MARK: - View Model For CoreData
+
+
+        var database = CoreDataManager.getInstance()
+        
+        var bindingFavouriteState : (()->()) = {}
+        
+        var favouriteState:Bool!{
+            didSet{
+                self.bindingFavouriteState()
+            }
+        }
+        
+        func checkFavouriteState(leagueId:Int) -> Bool  {
+            if let validState = database.fetchFormCoreData() {
+                for item in validState{
+                    if item.value(forKey: "league_key") as! Int == leagueId {
+                        favouriteState = true
+                        return true
+                    }
+                }
+                favouriteState = false
+                return false
+            }else{
+                favouriteState = false
+                return false
+            }
+        }
+        
+        func deleteFromFavourite(leagueId:Int){
+            database.deleteFromCoreData(leagueID: leagueId)
+            favouriteState = false
+        }
+        
+        func addToFavourite(leagueData : FavouriteLeagueData)  {
+            
+            database.saveToCoreData(favourite: FavouriteLeagueData(league_key: leagueData.league_key, league_name: leagueData.league_name, league_logo: leagueData.league_logo))
+            favouriteState = true
+            
+        }
+        
 }
 
 
+
+   

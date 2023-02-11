@@ -9,23 +9,24 @@ import UIKit
 import Kingfisher
 
 class LeagueDetailsViewController: UIViewController {
-
+    
     @IBOutlet weak var UpcomingEventsCollectionView: UICollectionView!
     @IBOutlet weak var LatestResultsCollectionView: UICollectionView!
     @IBOutlet weak var TeamsCollectionView: UICollectionView!
     
-    var viewModel : ViewModel?
+    var viewModel : ViewModel!
     var upcomingEventsArray : [UpcomingEvent]?
     var latestReultsArray : [LatestResult]?
     var teamsArray : [Team]?
+    var leagueData : FavouriteLeagueData!
     var sportName : String?
     var leagueID : Int?
-    
+    var leagueName : String?
     override func viewDidLoad() {
         super.viewDidLoad()
         
         print("sport : \(sportName ?? "football") , \(leagueID ?? 4 ) \n")
-
+        
         UpcomingEventsCollectionView.delegate = self
         UpcomingEventsCollectionView.dataSource = self
         
@@ -36,7 +37,7 @@ class LeagueDetailsViewController: UIViewController {
         
         LatestResultsCollectionView.register(LatestResultCollectionViewCell.nib(), forCellWithReuseIdentifier: "LatestResultCollectionViewCell")
         
-       
+        
         TeamsCollectionView.delegate = self
         TeamsCollectionView.dataSource = self
         
@@ -57,16 +58,23 @@ class LeagueDetailsViewController: UIViewController {
             self.renderTeamsCollectionView()
         }
         
+        self.setNavigationItem()
+        self.checkFavouriteState()
+        self.swipeToDismiss()
+        self.collectionViewStyle(on: UpcomingEventsCollectionView)
+        self.collectionViewStyle(on: LatestResultsCollectionView)
+        self.collectionViewStyle(on: TeamsCollectionView)
+        
     }
     
-   
+    
     
     
     // MARK: - Rendring View For Collections' Views
     func renderUpcomingEventsCollectionView() {
         DispatchQueue.main.async {
             self.upcomingEventsArray = self.viewModel?.upcomingEventsResult ?? []
-           self.UpcomingEventsCollectionView.reloadData()
+            self.UpcomingEventsCollectionView.reloadData()
         }
     }
     
@@ -83,7 +91,63 @@ class LeagueDetailsViewController: UIViewController {
             self.TeamsCollectionView.reloadData()
         }
     }
+    
+    //MARK: - Core Data Method
+   
+    func checkFavouriteState(){
+        if viewModel.checkFavouriteState(leagueId: leagueID!) {
+            self.navigationItem.rightBarButtonItem?.tintColor = UIColor.systemYellow
+        }else{
+            self.navigationItem.rightBarButtonItem?.tintColor = UIColor.black
+        }
+    }
+    
+    @objc func pressedFavourite() {
+        if viewModel.favouriteState {
+            viewModel.deleteFromFavourite(leagueId:leagueID! )
+            self.navigationItem.rightBarButtonItem?.tintColor = UIColor.black
+        }else{
+            viewModel.addToFavourite(leagueData: FavouriteLeagueData(league_key: leagueID!, league_name: sportName! , league_logo: "") )
+            navigationItem.rightBarButtonItem?.tintColor =  UIColor.systemYellow
+            
+        }
+        
+    }
+    
+    //MARK: - Navogation Bar Items And Gesture
 
+    func setNavigationItem() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrowshape.turn.up.backward.fill"), style: .plain, target: self, action:#selector(dismissViewController))
+        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.black
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName:"star.fill"), style: .plain, target: self, action: #selector(pressedFavourite))
+        navigationItem.title = leagueName
+    }
+    
+    func swipeToDismiss() {
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(dismissViewController))
+        swipeDown.direction = .down
+        self.view.addGestureRecognizer(swipeDown)
+    }
+    
+    @objc func dismissViewController(){
+        self.dismiss(animated: true, completion: nil)
+    }
+    //MARK: - Methods For Collections Views UI
+    func collectionViewStyle(on cv:UICollectionView){
+        cv.layer.cornerRadius = 12.0
+        cv.layer.borderWidth = 3
+        cv.layer.borderColor = UIColor.white.cgColor
+        cv.layer.shadowColor = UIColor.black.cgColor
+        cv.layer.shadowOffset = CGSize(width: 0, height: 2.0)
+        cv.layer.shadowRadius = 12
+        cv.layer.shadowOpacity = 0.8
+        if cv == TeamsCollectionView {
+            cv.layer.masksToBounds = false
+        }else{
+            cv.layer.masksToBounds = true
+        }
+    }
 }
 
 
@@ -118,8 +182,9 @@ extension LeagueDetailsViewController : UICollectionViewDataSource {
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UpcomingEventsCollectionViewCell", for: indexPath) as! UpcomingEventsCollectionViewCell
             
-          //  cell.upcomingEventHomeTeamImageView.kf.setImage(with: URL(string: upcomingEventsArray?[indexPath.row].home_team_logo ?? ""),placeholder: UIImage(systemName:"slowmo"))
-         //   cell.upcomingEventAwayTeamImageView.kf.setImage(with: URL(string: upcomingEventsArray?[indexPath.row].away_team_logo ?? ""),placeholder: UIImage(systemName:"slowmo"))
+            cell.upcomingEventHomeTeamImageView.kf.setImage(with: URL(string: upcomingEventsArray?[indexPath.row].home_team_logo ?? ""),placeholder: UIImage(systemName:"slowmo"))
+            cell.upcomingEventAwayTeamImageView.kf.setImage(with: URL(string: upcomingEventsArray?[indexPath.row].away_team_logo ?? ""),placeholder: UIImage(systemName:"slowmo"))
+            
             cell.upcomingEventHomeTeamNameLabel.text = upcomingEventsArray?[indexPath.row].event_home_team
             cell.upcomingEventAwayTeamNameLabel.text = upcomingEventsArray?[indexPath.row].event_away_team
             cell.upcomingEventDateLabel.text = upcomingEventsArray?[indexPath.row].event_date
