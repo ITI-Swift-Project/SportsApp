@@ -17,12 +17,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vFp-Kl-pZT">
+                                <rect key="frame" x="0.0" y="92" width="414" height="730"/>
+                                <color key="backgroundColor" red="0.41960784309999999" green="0.43921568630000002" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="253-gT-XtH">
-                                <rect key="frame" x="20" y="123" width="374" height="673"/>
+                                <rect key="frame" x="20" y="152" width="374" height="640"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="U5R-cd-1NQ">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="128"/>
-                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" red="0.65037864450000005" green="0.66221112010000005" blue="0.65090066189999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="128" id="lxM-CA-Hp2"/>
                                         </constraints>
@@ -45,8 +49,8 @@
                                         </cells>
                                     </collectionView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pWz-rj-Mmt">
-                                        <rect key="frame" x="0.0" y="155" width="374" height="390"/>
-                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="0.0" y="155" width="374" height="357"/>
+                                        <color key="backgroundColor" red="0.65037864450000005" green="0.66221112010000005" blue="0.65090066189999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hGg-Ux-pTe">
                                             <size key="itemSize" width="128" height="128"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -65,8 +69,8 @@
                                         </cells>
                                     </collectionView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wFM-lK-wAY">
-                                        <rect key="frame" x="0.0" y="572" width="374" height="101"/>
-                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="0.0" y="539" width="374" height="101"/>
+                                        <color key="backgroundColor" red="0.65037864450000005" green="0.66221112010000005" blue="0.65090066189999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="101" id="tNg-l3-J0J"/>
                                         </constraints>
@@ -92,12 +96,16 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.18215313550000001" green="0.243100971" blue="0.27518376709999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="253-gT-XtH" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="31" id="9bz-8z-CLk"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="vFp-Kl-pZT" secondAttribute="bottom" constant="40" id="6b2-Rv-OOF"/>
+                            <constraint firstItem="253-gT-XtH" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="60" id="9bz-8z-CLk"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="vFp-Kl-pZT" secondAttribute="trailing" id="CAf-cJ-qi8"/>
+                            <constraint firstItem="vFp-Kl-pZT" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Ika-4X-iXL"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="253-gT-XtH" secondAttribute="trailing" constant="20" id="OZS-ZZ-SZi"/>
                             <constraint firstItem="253-gT-XtH" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="PT7-D1-IgO"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="253-gT-XtH" secondAttribute="bottom" constant="66" id="wgl-3e-NKy"/>
+                            <constraint firstItem="vFp-Kl-pZT" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="uyr-wq-9F5"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="253-gT-XtH" secondAttribute="bottom" constant="70" id="wgl-3e-NKy"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Details" style="browser" id="Y54-Q5-79b"/>
