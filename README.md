@@ -13,14 +13,7 @@ The current version is working with Xcode Version Xcode 13. If you are using dif
 
 
 ## Features
-* Sports App
-
--
--
--
-
- 
-
+** Sports App
 
 * MVVM 
 * SOLID
