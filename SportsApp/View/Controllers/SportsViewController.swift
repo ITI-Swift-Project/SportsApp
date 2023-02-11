@@ -72,10 +72,10 @@ extension SportsViewController : UICollectionViewDataSource
         SportsCollectionViewCell.SportName.text = sportnames[indexPath.row]
         SportsCollectionViewCell.SportName.layer.cornerRadius = 7
         SportsCollectionViewCell.SportName.layer.masksToBounds = true
-        SportsCollectionViewCell.layer.cornerRadius = 76
+        SportsCollectionViewCell.layer.cornerRadius = 67
         SportsCollectionViewCell.layer.shadowColor = UIColor(named: "mycolor")?.cgColor
         SportsCollectionViewCell.layer.shadowOffset = CGSize(width: 0, height: 0)
-        SportsCollectionViewCell.layer.shadowRadius = 5
+        SportsCollectionViewCell.layer.shadowRadius = 7
         SportsCollectionViewCell.layer.shadowOpacity = 1
         SportsCollectionViewCell.layer.masksToBounds = false
         
