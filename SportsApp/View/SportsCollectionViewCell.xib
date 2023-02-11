@@ -16,29 +16,36 @@
                 <rect key="frame" x="0.0" y="0.0" width="134" height="134"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NX1-nQ-vWP">
-                        <rect key="frame" x="22" y="102" width="90" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NX1-nQ-vWP">
+                        <rect key="frame" x="48" y="103.66666666666667" width="41.333333333333343" height="20.333333333333329"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.1843137255" green="0.24313725489999999" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="36m-UU-kgY">
-                        <rect key="frame" x="22" y="13" width="90" height="80"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" id="36m-UU-kgY">
+                        <rect key="frame" x="22" y="17" width="90" height="80"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="36m-UU-kgY" secondAttribute="height" multiplier="9:8" id="SPv-i0-F7k"/>
+                        </constraints>
                     </imageView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="36m-UU-kgY" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" constant="22" id="Cr9-ge-cNL"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="36m-UU-kgY" secondAttribute="trailing" constant="22" id="6xm-j5-UmF"/>
+                <constraint firstAttribute="top" secondItem="36m-UU-kgY" secondAttribute="top" constant="-17" id="OcP-8G-B8l"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" secondItem="NX1-nQ-vWP" secondAttribute="bottom" constant="10" id="dpG-np-Mm9"/>
+                <constraint firstItem="36m-UU-kgY" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" constant="22" id="tNN-Op-AiM"/>
+                <constraint firstItem="NX1-nQ-vWP" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" constant="1.5" id="wzr-Se-JzS"/>
             </constraints>
-            <size key="customSize" width="172" height="197"/>
+            <size key="customSize" width="193" height="206"/>
             <connections>
                 <outlet property="SportImage" destination="36m-UU-kgY" id="vX8-pR-rDa"/>
                 <outlet property="SportName" destination="NX1-nQ-vWP" id="0u9-XS-uDV"/>
             </connections>
-            <point key="canvasLocation" x="242.74809160305344" y="-35.211267605633807"/>
+            <point key="canvasLocation" x="258.01526717557249" y="-33.802816901408455"/>
         </collectionViewCell>
     </objects>
 </document>
