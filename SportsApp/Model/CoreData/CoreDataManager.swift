@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+
 class CoreDataManager {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let managedContext : NSManagedObjectContext!

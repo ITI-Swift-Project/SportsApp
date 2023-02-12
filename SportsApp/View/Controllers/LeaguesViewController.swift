@@ -13,18 +13,19 @@ class LeaguesViewController: UIViewController {
     var leagueUrl : String?
     var sporName : String?
     var tableViewResponse : [LeaguesDetails]?
+    var LeaugeViewModel : ViewModel?
     
     @IBOutlet weak var LeaguesTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let viewmodel = ViewModel()
+        LeaugeViewModel = ViewModel()
         
-        viewmodel.getLeagues(url: leagueUrl!)
+        LeaugeViewModel?.getLeagues(url: leagueUrl!)
         
-        viewmodel.bindResultToViewController = { () in
-            DispatchQueue.main.async {
-                self.tableViewResponse = viewmodel.newData
+        LeaugeViewModel?.bindResultToViewController = { () in
+            DispatchQueue.main.async { [self] in
+                self.tableViewResponse = LeaugeViewModel?.newData
                 self.LeaguesTableView.reloadData()
             }
            

@@ -95,7 +95,7 @@ class LeagueDetailsViewController: UIViewController {
     //MARK: - Core Data Method
    
     func checkFavouriteState(){
-        if viewModel.checkFavouriteState(leagueId: leagueID!) {
+        if viewModel.checkFavouriteState(leagueId: leagueID ?? 0) {
             self.navigationItem.rightBarButtonItem?.tintColor = UIColor.systemYellow
         }else{
             self.navigationItem.rightBarButtonItem?.tintColor = UIColor.black
