@@ -16,22 +16,30 @@
                 <rect key="frame" x="0.0" y="0.0" width="134" height="134"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NX1-nQ-vWP">
-                        <rect key="frame" x="22" y="102" width="90" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NX1-nQ-vWP">
+                        <rect key="frame" x="46.333333333333329" y="102" width="41.333333333333329" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.1843137255" green="0.24313725489999999" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="36m-UU-kgY">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" id="36m-UU-kgY">
                         <rect key="frame" x="22" y="13" width="90" height="80"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="36m-UU-kgY" secondAttribute="height" multiplier="9:8" id="7ys-Ts-aQm"/>
+                        </constraints>
                     </imageView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="36m-UU-kgY" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" constant="22" id="Cr9-ge-cNL"/>
+                <constraint firstItem="36m-UU-kgY" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" constant="22" id="BtL-fz-Ybb"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="36m-UU-kgY" secondAttribute="trailing" constant="22" id="CQg-69-ugc"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" secondItem="NX1-nQ-vWP" secondAttribute="bottom" constant="11" id="Lm7-eq-coS"/>
+                <constraint firstItem="NX1-nQ-vWP" firstAttribute="top" secondItem="36m-UU-kgY" secondAttribute="bottom" constant="9" id="Mve-sL-vbh"/>
+                <constraint firstAttribute="top" secondItem="36m-UU-kgY" secondAttribute="top" constant="-13" id="UIk-5C-qx0"/>
+                <constraint firstItem="NX1-nQ-vWP" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="XKH-AN-QOT"/>
             </constraints>
             <size key="customSize" width="172" height="197"/>
             <connections>
