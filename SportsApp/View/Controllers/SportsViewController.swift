@@ -12,7 +12,7 @@ class SportsViewController: UIViewController {
     var arrayofimages : [UIImage] = []
     var sportnames : [String] = []
     var urlsports : [String] = ["football","basketball","cricket","tennis"]
-   
+    
     @IBOutlet weak var SportsViewCollection: UICollectionView!
     
     @IBOutlet weak var CollectionViewBackground: UIImageView!
@@ -22,14 +22,14 @@ class SportsViewController: UIViewController {
         let nib = UINib(nibName: "SportsCollectionViewCell", bundle: nil)
         SportsViewCollection.register(nib, forCellWithReuseIdentifier: "SportsCell")
         
-       SportsViewCollection.delegate = self
-       SportsViewCollection.dataSource = self
+        SportsViewCollection.delegate = self
+        SportsViewCollection.dataSource = self
         
         self.navigationItem.title = "Sports"
-
+        
         //navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.barTintColor = UIColor(named: "mycolor")
-    
+        
         
         arrayofimages.append(UIImage(named: "Football")!)
         arrayofimages.append(UIImage(named: "Basketball")!)
@@ -87,8 +87,8 @@ extension SportsViewController : UICollectionViewDataSource
 
 extension SportsViewController :  UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
-     {
-         return CGSize(width: (UIScreen.main.bounds.size.width/2)-35 , height: (UIScreen.main.bounds.height/5))
-     }
+    {
+        return CGSize(width: (UIScreen.main.bounds.size.width/2)-35 , height: (UIScreen.main.bounds.height/5))
+    }
 }
 

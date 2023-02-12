@@ -38,6 +38,7 @@ class CoreDataManager {
         newFavLeague.setValue(favourite.league_key, forKey: "league_key")
         newFavLeague.setValue(favourite.league_name , forKey: "league_name")
         newFavLeague.setValue(favourite.league_logo , forKey: "league_logo")
+
         try?self.managedContext.save()
         
     }

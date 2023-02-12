@@ -12,6 +12,7 @@ class LeaguesViewController: UIViewController {
     
     var leagueUrl : String?
     var sporName : String?
+
     var tableViewResponse : [LeaguesDetails]?
     var LeaugeViewModel : ViewModel?
     
@@ -50,10 +51,9 @@ extension LeaguesViewController : UITableViewDelegate
        
         LeagueDetailsObj.leagueID = tableViewResponse?[indexPath.row].league_key
         LeagueDetailsObj.sportName = self.sporName
-        LeagueDetailsObj.leagueName = tableViewResponse?[indexPath.row].league_name ?? ""
-        LeagueDetailsObj.leagueData?.league_logo = tableViewResponse?[indexPath.row].league_logo ?? ""
-        LeagueDetailsObj.leagueData?.league_name =  tableViewResponse?[indexPath.row].league_name ?? ""
-        LeagueDetailsObj.leagueData?.league_key = tableViewResponse![indexPath.row].league_key ?? 0
+        LeagueDetailsObj.leagueName = tableViewResponse?[indexPath.row].league_name
+        LeagueDetailsObj.leagueLogo = tableViewResponse?[indexPath.row].league_logo 
+       
         let navController = UINavigationController(rootViewController: LeagueDetailsObj)
         navController.modalPresentationStyle = .fullScreen
         self.present(navController, animated: true ,completion: nil)

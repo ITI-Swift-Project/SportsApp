@@ -18,9 +18,9 @@ class LeagueDetailsViewController: UIViewController {
     var upcomingEventsArray : [UpcomingEvent]?
     var latestReultsArray : [LatestResult]?
     var teamsArray : [Team]?
-    var leagueData : FavouriteLeagueData!
     var sportName : String?
     var leagueID : Int?
+    var leagueLogo : String?
     var leagueName : String?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,7 +107,7 @@ class LeagueDetailsViewController: UIViewController {
             viewModel.deleteFromFavourite(leagueId:leagueID! )
             self.navigationItem.rightBarButtonItem?.tintColor = UIColor.black
         }else{
-            viewModel.addToFavourite(leagueData: FavouriteLeagueData(league_key: leagueID!, league_name: sportName! , league_logo: "") )
+            viewModel.addToFavourite(leagueData: FavouriteLeagueData(league_key: leagueID!, league_name: leagueName! , league_logo: leagueLogo! ) )
             navigationItem.rightBarButtonItem?.tintColor =  UIColor.systemYellow
             
         }
