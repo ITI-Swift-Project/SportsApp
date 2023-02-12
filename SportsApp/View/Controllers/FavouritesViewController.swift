@@ -17,6 +17,7 @@ class FavouritesViewController: UIViewController {
     @IBOutlet weak var FavouritesTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         FavouriteViewModel = ViewModel()
         FavouriteLeagues = FavouriteViewModel?.database.fetchFormCoreData()
         
@@ -28,10 +29,15 @@ class FavouritesViewController: UIViewController {
         FavouritesTableView.register(nib, forCellReuseIdentifier: "TableCell")
        // self.FavouritesTableView.reloadData()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
+        
+        FavouriteLeagues = FavouriteViewModel?.database.fetchFormCoreData()
+       
         self.FavouritesTableView.reloadData()
 
     }
+    
 }
 extension FavouritesViewController : UITableViewDelegate , UITableViewDataSource
 {
@@ -64,7 +70,11 @@ extension FavouritesViewController : UITableViewDelegate , UITableViewDataSource
         if reachability?.isReachable() == true
         {
             let LeagueDetailsObj = SecondStoryBoardObj.instantiateViewController(withIdentifier: "LeagueDetails") as! LeagueDetailsViewController
-            self.navigationController?.pushViewController(LeagueDetailsObj, animated: true)
+            
+            let navController = UINavigationController(rootViewController: LeagueDetailsObj)
+            navController.modalPresentationStyle = .fullScreen
+            self.present(navController, animated: true ,completion: nil)
+            
         }
         else
         {
