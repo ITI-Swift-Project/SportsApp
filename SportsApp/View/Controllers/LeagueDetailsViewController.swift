@@ -26,7 +26,7 @@ class LeagueDetailsViewController: UIViewController {
         super.viewDidLoad()
         
         print("sport : \(sportName ?? "football") , \(leagueID ?? 4 ) \n")
-        
+        let dispatchGroup = DispatchGroup()
         UpcomingEventsCollectionView.delegate = self
         UpcomingEventsCollectionView.dataSource = self
         
@@ -44,18 +44,27 @@ class LeagueDetailsViewController: UIViewController {
         TeamsCollectionView.register(TeamCollectionViewCell.nib(), forCellWithReuseIdentifier: "TeamCollectionViewCell")
         
         viewModel = ViewModel()
+       
         
+        dispatchGroup.enter()
         viewModel?.getUpcomingEventsData(sportName: sportName ?? "football" , leagueID: leagueID ?? 4)
+        dispatchGroup.enter()
+
         viewModel?.getLatestEventsData(sportName: sportName ?? "football" , leagueID: leagueID ?? 4)
+        dispatchGroup.enter()
+
         viewModel?.getTeamsData(sportName: sportName ?? "football" , leagueID: leagueID ?? 4)
         viewModel?.bindUpcoimgEventsResultToLeaguesDetailsViewController = { () in
             self.renderUpcomingEventsCollectionView()
+            dispatchGroup.leave()
         }
         viewModel?.bindLatestResultsToLeaguesDetailsViewController = { () in
             self.renderLatestEventsCollectionView()
+            dispatchGroup.leave()
         }
         viewModel?.bindTeamsDataResultToLeaguesDetailsViewController = { () in
             self.renderTeamsCollectionView()
+            dispatchGroup.leave()
         }
         
         self.setNavigationItem()
@@ -224,11 +233,11 @@ extension LeagueDetailsViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch collectionView {
         case UpcomingEventsCollectionView :
-            return CGSize(width: 360, height: 112)
+            return CGSize(width: (UpcomingEventsCollectionView.bounds.width)-100, height:(UpcomingEventsCollectionView.bounds.height)-10)
         case LatestResultsCollectionView :
             return CGSize(width: 360, height: 112)
         case TeamsCollectionView :
-            return CGSize(width: 112, height: 112)
+            return CGSize(width: (TeamsCollectionView.bounds.width)/3, height: TeamsCollectionView.bounds.height-15)
         default :
             return CGSize()
         }

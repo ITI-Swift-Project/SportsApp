@@ -22,10 +22,10 @@
                                 <color key="backgroundColor" red="0.79174584150000005" green="0.80673134329999996" blue="0.77614772320000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="253-gT-XtH">
-                                <rect key="frame" x="20" y="152" width="374" height="640"/>
+                                <rect key="frame" x="8" y="152" width="398" height="640"/>
                                 <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="U5R-cd-1NQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="128"/>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="U5R-cd-1NQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="398" height="128"/>
                                         <color key="backgroundColor" red="0.65037864450000005" green="0.66221112010000005" blue="0.65090066189999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="128" id="lxM-CA-Hp2"/>
@@ -49,7 +49,7 @@
                                         </cells>
                                     </collectionView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pWz-rj-Mmt">
-                                        <rect key="frame" x="0.0" y="155" width="374" height="357"/>
+                                        <rect key="frame" x="0.0" y="155" width="398" height="357"/>
                                         <color key="backgroundColor" red="0.65037864450000005" green="0.66221112010000005" blue="0.65090066189999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hGg-Ux-pTe">
                                             <size key="itemSize" width="128" height="128"/>
@@ -69,7 +69,7 @@
                                         </cells>
                                     </collectionView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wFM-lK-wAY">
-                                        <rect key="frame" x="0.0" y="539" width="374" height="101"/>
+                                        <rect key="frame" x="0.0" y="539" width="398" height="101"/>
                                         <color key="backgroundColor" red="0.65037864450000005" green="0.66221112010000005" blue="0.65090066189999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="101" id="tNg-l3-J0J"/>
@@ -102,8 +102,8 @@
                             <constraint firstItem="253-gT-XtH" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="60" id="9bz-8z-CLk"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="vFp-Kl-pZT" secondAttribute="trailing" id="CAf-cJ-qi8"/>
                             <constraint firstItem="vFp-Kl-pZT" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Ika-4X-iXL"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="253-gT-XtH" secondAttribute="trailing" constant="20" id="OZS-ZZ-SZi"/>
-                            <constraint firstItem="253-gT-XtH" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="PT7-D1-IgO"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="253-gT-XtH" secondAttribute="trailing" constant="8" id="OZS-ZZ-SZi"/>
+                            <constraint firstItem="253-gT-XtH" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="8" id="PT7-D1-IgO"/>
                             <constraint firstItem="vFp-Kl-pZT" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="uyr-wq-9F5"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="253-gT-XtH" secondAttribute="bottom" constant="70" id="wgl-3e-NKy"/>
                         </constraints>

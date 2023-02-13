@@ -16,17 +16,25 @@
                 <rect key="frame" x="0.0" y="0.0" width="112" height="112"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QQi-c3-RXP">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" id="QQi-c3-RXP">
                         <rect key="frame" x="8" y="8" width="96" height="96"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="QQi-c3-RXP" secondAttribute="height" multiplier="1:1" id="f4C-rp-F0R"/>
+                        </constraints>
                     </imageView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="top" secondItem="QQi-c3-RXP" secondAttribute="top" constant="-8" id="9mC-De-Dji"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="QQi-c3-RXP" secondAttribute="trailing" constant="8" id="i1H-FG-9dW"/>
+                <constraint firstItem="QQi-c3-RXP" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" constant="8" id="olB-4a-boI"/>
+            </constraints>
             <connections>
                 <outlet property="teamImageView" destination="QQi-c3-RXP" id="fT0-Va-IzY"/>
             </connections>
-            <point key="canvasLocation" x="119" y="13"/>
+            <point key="canvasLocation" x="117.55725190839694" y="12.67605633802817"/>
         </collectionViewCell>
     </objects>
 </document>

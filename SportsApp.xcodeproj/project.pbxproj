@@ -184,9 +184,9 @@
 			children = (
 				38484D51299351B100F813D9 /* SportsCollectionViewCell.xib */,
 				38E01B55298EB4D40044B1F2 /* TableViewCell.xib */,
+				2784C1372991B6E400056A53 /* TeamCollectionViewCell.xib */,
 				270AED4829906DE6005A50A2 /* UpcomingEventsCollectionViewCell.xib */,
 				2784C1312991AC8400056A53 /* LatestResultCollectionViewCell.xib */,
-				2784C1372991B6E400056A53 /* TeamCollectionViewCell.xib */,
 				2754BC312999C39D008699E7 /* PlayerCollectionViewCell.xib */,
 			);
 			path = Cells;
