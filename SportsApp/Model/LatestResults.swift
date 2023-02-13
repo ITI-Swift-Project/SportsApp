@@ -19,6 +19,14 @@ class LatestResult : Decodable {
     var  home_team_logo : String?
     var  away_team_logo: String?
     
+    //Tennis
+    var  event_first_player : String?
+    var  event_second_player : String?
+    var  first_player_key :  Int?
+    var  second_player_key : Int?
+    var event_first_player_logo : String?
+    var event_second_player_logo : String?
+    
 }
 
 class LatestResultsData : Decodable {

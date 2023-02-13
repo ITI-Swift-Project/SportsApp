@@ -137,7 +137,7 @@ class LeagueDetailsViewController: UIViewController {
     func collectionViewStyle(on cv:UICollectionView){
         cv.layer.cornerRadius = 12.0
         cv.layer.borderWidth = 3
-        cv.layer.borderColor = UIColor.white.cgColor
+        cv.layer.borderColor = UIColor.gray.cgColor
         cv.layer.shadowColor = UIColor.black.cgColor
         cv.layer.shadowOffset = CGSize(width: 0, height: 2.0)
         cv.layer.shadowRadius = 12
@@ -153,8 +153,15 @@ class LeagueDetailsViewController: UIViewController {
 
     // MARK: - Collections' Views Protocols
 extension LeagueDetailsViewController : UICollectionViewDelegate {
-    
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == TeamsCollectionView {
+            let teamDtailsVC = self.storyboard?.instantiateViewController(withIdentifier: "teamDetails") as! TeamDetailsViewController
+            teamDtailsVC.players = teamsArray?[indexPath.row].players
+            teamDtailsVC.teamName = teamsArray?[indexPath.row].team_name
+            teamDtailsVC.teamLogo =  teamsArray?[indexPath.row].team_logo
+            self.present(teamDtailsVC, animated: true ,completion: nil)
+        }
+    }
 }
 
 extension LeagueDetailsViewController : UICollectionViewDataSource {
