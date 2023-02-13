@@ -34,12 +34,13 @@ class CoreDataManager {
         entity = NSEntityDescription.entity(forEntityName: "LeaguesCoreData", in: managedContext)
     }
     
-    func saveToCoreData(favourite : FavouriteLeagueData) {
+    func saveToCoreData(favourite : FavouriteLeagueData, sportName: String) {
         let newFavLeague = NSEntityDescription.insertNewObject(forEntityName: "LeaguesCoreData", into: managedContext)
         
         newFavLeague.setValue(favourite.league_key, forKey: "league_key")
         newFavLeague.setValue(favourite.league_name , forKey: "league_name")
         newFavLeague.setValue(favourite.league_logo , forKey: "league_logo")
+        newFavLeague.setValue(sportName, forKey: "sportName")
 
         try?self.managedContext.save()
         

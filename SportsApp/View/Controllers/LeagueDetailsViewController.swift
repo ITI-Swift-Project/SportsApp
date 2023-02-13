@@ -116,7 +116,7 @@ class LeagueDetailsViewController: UIViewController {
             viewModel.deleteFromFavourite(leagueId:leagueID! )
             self.navigationItem.rightBarButtonItem?.tintColor = UIColor.black
         }else{
-            viewModel.addToFavourite(leagueData: FavouriteLeagueData(league_key: leagueID!, league_name: leagueName! , league_logo: leagueLogo! ) )
+            viewModel.addToFavourite(leagueData: FavouriteLeagueData(league_key: leagueID!, league_name: leagueName! , league_logo: leagueLogo ?? "" ), sportName: sportName ?? "")
             navigationItem.rightBarButtonItem?.tintColor =  UIColor.systemYellow
             
         }

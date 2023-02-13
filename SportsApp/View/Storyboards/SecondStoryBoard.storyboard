@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -127,14 +126,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lFr-Gm-3Ry">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="lFr-Gm-3Ry">
                                 <rect key="frame" x="87" y="113" width="240" height="231"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="lFr-Gm-3Ry" secondAttribute="height" multiplier="80:77" id="ayQ-mv-qmp"/>
+                                </constraints>
                             </imageView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7oP-40-n9X">
-                                <rect key="frame" x="0.0" y="344" width="414" height="474"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.79174584150000005" green="0.80673134329999996" blue="0.77614772320000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OWw-b8-kB1">
+                                <rect key="frame" x="87" y="60" width="240" height="33"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
+                                <color key="textColor" red="0.74901960779999999" green="0.76470588240000004" blue="0.72941176470000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7oP-40-n9X">
+                                <rect key="frame" x="8" y="340" width="398" height="522"/>
+                                <color key="backgroundColor" red="0.1843137255" green="0.24313725489999999" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cO3-AO-r4t">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -152,16 +159,21 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tema Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OWw-b8-kB1">
-                                <rect key="frame" x="106" y="60" width="202" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="JV9-Mr-TZw"/>
-                        <color key="backgroundColor" name="mycolor"/>
+                        <color key="backgroundColor" red="0.1843137255" green="0.24313725489999999" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="JV9-Mr-TZw" firstAttribute="trailing" secondItem="7oP-40-n9X" secondAttribute="trailing" constant="8" id="4g1-H3-iLf"/>
+                            <constraint firstItem="JV9-Mr-TZw" firstAttribute="trailing" secondItem="lFr-Gm-3Ry" secondAttribute="trailing" constant="87" id="7ZL-hz-ctm"/>
+                            <constraint firstItem="JV9-Mr-TZw" firstAttribute="bottom" secondItem="7oP-40-n9X" secondAttribute="bottom" id="8DA-pw-dKd"/>
+                            <constraint firstItem="lFr-Gm-3Ry" firstAttribute="leading" secondItem="JV9-Mr-TZw" secondAttribute="leading" constant="87" id="Fte-hr-WwF"/>
+                            <constraint firstAttribute="top" secondItem="OWw-b8-kB1" secondAttribute="bottom" constant="-93" id="WNY-PO-YHG"/>
+                            <constraint firstItem="7oP-40-n9X" firstAttribute="height" secondItem="ICj-SF-4nV" secondAttribute="height" multiplier="0.582589" id="e5w-Bv-SZR"/>
+                            <constraint firstItem="OWw-b8-kB1" firstAttribute="leading" secondItem="JV9-Mr-TZw" secondAttribute="leading" constant="87" id="f99-PP-TGO"/>
+                            <constraint firstItem="JV9-Mr-TZw" firstAttribute="trailing" secondItem="OWw-b8-kB1" secondAttribute="trailing" constant="87" id="fZG-sF-HEN"/>
+                            <constraint firstItem="7oP-40-n9X" firstAttribute="leading" secondItem="JV9-Mr-TZw" secondAttribute="leading" constant="8" id="lcl-Je-npH"/>
+                            <constraint firstItem="OWw-b8-kB1" firstAttribute="top" secondItem="JV9-Mr-TZw" secondAttribute="top" constant="12" id="sfm-oR-Boo"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="playersCollectionView" destination="7oP-40-n9X" id="uBJ-tV-oQf"/>
@@ -204,9 +216,4 @@
         </scene>
     </scenes>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-    <resources>
-        <namedColor name="mycolor">
-            <color red="0.18400000035762787" green="0.24300000071525574" blue="0.27500000596046448" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-    </resources>
 </document>

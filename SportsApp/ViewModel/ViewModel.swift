@@ -102,9 +102,9 @@ class ViewModel
             favouriteState = false
         }
         
-        func addToFavourite(leagueData : FavouriteLeagueData)  {
+    func addToFavourite(leagueData : FavouriteLeagueData, sportName : String)  {
             
-            database.saveToCoreData(favourite: FavouriteLeagueData(league_key: leagueData.league_key, league_name: leagueData.league_name, league_logo: leagueData.league_logo))
+        database.saveToCoreData(favourite: FavouriteLeagueData(league_key: leagueData.league_key, league_name: leagueData.league_name, league_logo: leagueData.league_logo), sportName: sportName)
             favouriteState = true
             
         }
