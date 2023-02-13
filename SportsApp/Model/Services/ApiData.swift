@@ -45,6 +45,7 @@ class ApiData : LeagueService
 
 
 //MARK: Fetching Data For LeagueDetailsViewController
+
 class NetworkServices : UpcomingData {
     static func fetchUpcomingEventsData(sportName: String, leagueID: Int, complitionHandler: @escaping (UpcomingEventsData?) -> Void) {
         AF.request("https://apiv2.allsportsapi.com/\(sportName)/?met=Fixtures&leagueId=\(leagueID)&from=2023-01-18&to=2024-01-18&APIkey=\(APIKey)")
@@ -80,5 +81,3 @@ extension NetworkServices : TeamsData {
     }
 }
 
-
-//MARK: - dfgdsdsvefrv 

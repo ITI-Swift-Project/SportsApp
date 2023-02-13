@@ -20,7 +20,9 @@ class UpcomingEventsCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
     static func nib() -> UINib{
     return UINib(nibName: "UpcomingEventsCollectionViewCell", bundle: nil)
     }
+    
 }
