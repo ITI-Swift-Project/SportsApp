@@ -45,13 +45,11 @@ class SportsViewController: UIViewController {
     }
 }
 
-
 extension SportsViewController : UICollectionViewDelegate
 {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let LeaguesViewControllerObj = self.storyboard?.instantiateViewController(withIdentifier: "League") as! LeaguesViewController
         LeaguesViewControllerObj.leagueUrl = "https://apiv2.allsportsapi.com/\(urlsports[indexPath.row])/?met=Leagues&APIkey=\(APIKey)"
-        //passing sport name to the other views and i don't know if it the right way to do that ?
         LeaguesViewControllerObj.sporName = urlsports[indexPath.row]
         self.navigationController?.pushViewController(LeaguesViewControllerObj, animated: true)
     }
