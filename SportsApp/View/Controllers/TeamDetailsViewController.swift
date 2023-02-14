@@ -71,9 +71,9 @@ extension TeamDetailsViewController : UICollectionViewDataSource {
         cell.redCardsLabel.text =  " : \(players?[indexPath.row].player_red_cards ?? "")"
         cell.matchesLabel.text = "Matches : \(players?[indexPath.row].player_match_played ?? "")"
         cell.goalsLabel.text = "Goals : \(players?[indexPath.row].player_goals ?? "")"
-        cell.layer.cornerRadius = 115/2
+        //cell.layer.cornerRadius = 115/2
         cell.layer.borderWidth = 2
-        cell.layer.borderColor = UIColor.gray.cgColor
+        cell.layer.borderColor = UIColor(named:"mycolor")?.cgColor
         
         
         cell.playerImagView.kf.setImage(with: URL(string:players?[indexPath.row].player_image ?? "" ),placeholder: UIImage(systemName:"slowmo"))
