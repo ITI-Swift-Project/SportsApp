@@ -9,10 +9,11 @@ import UIKit
 import CoreData
 import Kingfisher
 import Reachability
+
 class FavouritesViewController: UIViewController {
     
     var FavouriteViewModel : ViewModel?
-    var FavouriteLeagues : [NSManagedObject]!
+    var FavouriteLeagues : [NSManagedObject]?
     var Footballarray : [NSManagedObject] = []
     var Basketballarray : [NSManagedObject] = []
     var Cricketarray : [NSManagedObject] = []
@@ -24,7 +25,7 @@ class FavouritesViewController: UIViewController {
         
         FavouriteViewModel = ViewModel()
         FavouriteLeagues = FavouriteViewModel?.database.fetchFormCoreData()
-        
+        Filtration()
         
         FavouritesTableView.delegate = self
         FavouritesTableView.dataSource = self
@@ -34,11 +35,9 @@ class FavouritesViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
        FavouriteLeagues = FavouriteViewModel?.database.fetchFormCoreData()
        Filtration()
        self.FavouritesTableView.reloadData()
-
     }
     
 }
@@ -151,51 +150,47 @@ extension FavouritesViewController : UITableViewDelegate , UITableViewDataSource
             self.present(alert, animated: true, completion: nil)
         }
     }
-    /*func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        FavouriteViewModel?.deleteFromFavourite(leagueId: (FavouriteLeagues[indexPath.row].value(forKey: "league_key")as? Int ?? 0))
-        Footballarray.remove(object :FavouriteLeagues[indexPath.row])
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        FavouriteViewModel?.deleteFromFavourite(leagueId: (FavouriteLeagues?[indexPath.row].value(forKey: "league_key")as? Int ?? 0))
         FavouriteLeagues = FavouriteViewModel?.database.fetchFormCoreData()
+       Filtration()
         FavouritesTableView.reloadData()
-    }*/
+    }
     
     func Filtration()
     {
-        if !(FavouriteLeagues.isEmpty){
+        if !((FavouriteLeagues ?? []).isEmpty){
             Footballarray = []
             Basketballarray = []
             Cricketarray = []
             Tennisarray = []
             for league in FavouriteLeagues ?? []
             {
-                print(league.value(forKey: "sportName")!)
-                if ((league.value(forKey: "sportName")!) as! String == "football")
+                if ((league.value(forKey: "sportName") ?? "") as! String == "football")
                 {
-                   
                     Footballarray.append(league)
-                    
                 }
-                else if ((league.value(forKey: "sportName")!) as! String == "basketball")
+                else if ((league.value(forKey: "sportName") ?? "") as! String == "basketball")
                 {
-                    
                     Basketballarray.append(league)
-                    
                 }
-                else if ((league.value(forKey: "sportName")!) as! String == "cricket")
+                else if ((league.value(forKey: "sportName") ?? "") as! String == "cricket")
                 {
-                   
                     Cricketarray.append(league)
-                    
                 }
-                else if ((league.value(forKey: "sportName")!) as! String == "tennis")
+                else if ((league.value(forKey: "sportName") ?? "") as! String == "tennis")
                 {
-                    
                     Tennisarray.append(league)
-                   
                 }
                     
             }
+        }else{
+            Footballarray = []
+            Basketballarray = []
+            Cricketarray = []
+            Tennisarray = []
         }
-      
     }
 }
 

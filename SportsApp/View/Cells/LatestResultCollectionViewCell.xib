@@ -93,6 +93,7 @@
             <connections>
                 <outlet property="eventAwayTeamImageView" destination="cNC-WE-h14" id="q4r-Km-ln6"/>
                 <outlet property="eventAwayTeamNameLabel" destination="Jbz-hR-sU4" id="xYp-vZ-vHX"/>
+                <outlet property="eventDataLabel" destination="MVo-qN-Rd1" id="cmk-Ti-xzg"/>
                 <outlet property="eventFinalResultLabel" destination="6Io-kw-8O6" id="dBu-1f-hiA"/>
                 <outlet property="eventHomeTeamImageView" destination="IcS-iV-41D" id="i5X-qE-XYG"/>
                 <outlet property="eventHomeTeamNameLabel" destination="JI7-BI-B9j" id="Zgv-oN-rek"/>

@@ -47,7 +47,9 @@ extension LeaguesViewController : UITableViewDelegate
    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let SecondStoryBoardObj = UIStoryboard(name: "SecondStoryBoard", bundle: nil)
+        
         let LeagueDetailsObj = SecondStoryBoardObj.instantiateViewController(withIdentifier: "LeagueDetails") as! LeagueDetailsViewController
+        
        
         LeagueDetailsObj.leagueID = tableViewResponse?[indexPath.row].league_key
         LeagueDetailsObj.sportName = self.sporName

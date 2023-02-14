@@ -34,6 +34,7 @@ class CoreDataManager {
         entity = NSEntityDescription.entity(forEntityName: "LeaguesCoreData", in: managedContext)
     }
     
+    
     func saveToCoreData(favourite : FavouriteLeagueData, sportName: String) {
         let newFavLeague = NSEntityDescription.insertNewObject(forEntityName: "LeaguesCoreData", into: managedContext)
         
@@ -58,13 +59,18 @@ class CoreDataManager {
         }
     }
     
-    func deleteFromCoreData (leagueID : Int){
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "LeaguesCoreData")
-        if let arr = try? managedContext.fetch(fetchRequest) {
-            managedContext.delete((arr[leagueID]))
-            try?managedContext.save()
+
+    func deleteFromCoreData (leagueID : Int) {
+        if let arr = fetchFormCoreData() {
+            for obj in arr {
+                if obj.value(forKey:"league_key") as! Int == leagueID{
+                    managedContext.delete(obj)
+                    try?managedContext.save()
+                }
+            }
         }
     }
+
 
 }
 

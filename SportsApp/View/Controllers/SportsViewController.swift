@@ -27,7 +27,6 @@ class SportsViewController: UIViewController {
         
         self.navigationItem.title = "Sports"
         
-        //navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.barTintColor = UIColor(named: "mycolor")
         
         

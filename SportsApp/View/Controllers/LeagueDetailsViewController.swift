@@ -67,6 +67,12 @@ class LeagueDetailsViewController: UIViewController {
             dispatchGroup.leave()
         }
         
+        dispatchGroup.notify(queue: .main){
+            self.UpcomingEventsCollectionView.reloadData()
+            self.LatestResultsCollectionView.reloadData()
+            self.TeamsCollectionView.reloadData()
+        }
+        
         self.setNavigationItem()
         self.checkFavouriteState()
         self.swipeToDismiss()
@@ -83,21 +89,18 @@ class LeagueDetailsViewController: UIViewController {
     func renderUpcomingEventsCollectionView() {
         DispatchQueue.main.async {
             self.upcomingEventsArray = self.viewModel?.upcomingEventsResult ?? []
-            self.UpcomingEventsCollectionView.reloadData()
         }
     }
     
     func renderLatestEventsCollectionView() {
         DispatchQueue.main.async {
             self.latestReultsArray = self.viewModel?.latestEventsResult ?? []
-            self.LatestResultsCollectionView.reloadData()
         }
     }
     
     func renderTeamsCollectionView() {
         DispatchQueue.main.async {
             self.teamsArray = self.viewModel?.teamsDataResult ?? []
-            self.TeamsCollectionView.reloadData()
         }
     }
     
@@ -107,14 +110,14 @@ class LeagueDetailsViewController: UIViewController {
         if viewModel.checkFavouriteState(leagueId: leagueID ?? 0) {
             self.navigationItem.rightBarButtonItem?.tintColor = UIColor.systemYellow
         }else{
-            self.navigationItem.rightBarButtonItem?.tintColor = UIColor.black
+            self.navigationItem.rightBarButtonItem?.tintColor = UIColor(named:"mygrey")
         }
     }
     
     @objc func pressedFavourite() {
         if viewModel.favouriteState {
             viewModel.deleteFromFavourite(leagueId:leagueID! )
-            self.navigationItem.rightBarButtonItem?.tintColor = UIColor.black
+            self.navigationItem.rightBarButtonItem?.tintColor = UIColor(named:"mygrey")
         }else{
             viewModel.addToFavourite(leagueData: FavouriteLeagueData(league_key: leagueID!, league_name: leagueName! , league_logo: leagueLogo ?? "" ), sportName: sportName ?? "")
             navigationItem.rightBarButtonItem?.tintColor =  UIColor.systemYellow
@@ -127,7 +130,7 @@ class LeagueDetailsViewController: UIViewController {
 
     func setNavigationItem() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrowshape.turn.up.backward.fill"), style: .plain, target: self, action:#selector(dismissViewController))
-        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.black
+        self.navigationItem.leftBarButtonItem?.tintColor = UIColor(named:"mygrey")
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName:"star.fill"), style: .plain, target: self, action: #selector(pressedFavourite))
         navigationItem.title = leagueName
@@ -198,8 +201,18 @@ extension LeagueDetailsViewController : UICollectionViewDataSource {
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UpcomingEventsCollectionViewCell", for: indexPath) as! UpcomingEventsCollectionViewCell
             
-            cell.upcomingEventHomeTeamImageView.kf.setImage(with: URL(string: upcomingEventsArray?[indexPath.row].home_team_logo ?? ""),placeholder: UIImage(systemName:"slowmo"))
-            cell.upcomingEventAwayTeamImageView.kf.setImage(with: URL(string: upcomingEventsArray?[indexPath.row].away_team_logo ?? ""),placeholder: UIImage(systemName:"slowmo"))
+            if sportName == "basketball" {
+                cell.upcomingEventHomeTeamImageView.kf.indicatorType = .activity
+                cell.upcomingEventHomeTeamImageView.kf.setImage(with: URL(string: upcomingEventsArray?[indexPath.row].event_home_team_logo ?? ""),placeholder: UIImage(systemName:"exclamationmark.circle.fill"))
+                cell.upcomingEventAwayTeamImageView.kf.indicatorType = .activity
+                cell.upcomingEventAwayTeamImageView.kf.setImage(with: URL(string: upcomingEventsArray?[indexPath.row].event_away_team_logo ?? ""),placeholder: UIImage(systemName:"exclamationmark.circle.fill"))
+            }else{
+                cell.upcomingEventHomeTeamImageView.kf.indicatorType = .activity
+                cell.upcomingEventHomeTeamImageView.kf.setImage(with: URL(string: upcomingEventsArray?[indexPath.row].home_team_logo ?? ""),placeholder: UIImage(systemName:"exclamationmark.circle.fill"))
+                cell.upcomingEventAwayTeamImageView.kf.indicatorType = .activity
+                cell.upcomingEventAwayTeamImageView.kf.setImage(with: URL(string: upcomingEventsArray?[indexPath.row].away_team_logo ?? ""),placeholder: UIImage(systemName:"exclamationmark.circle.fill"))
+            }
+
             
             cell.upcomingEventHomeTeamNameLabel.text = upcomingEventsArray?[indexPath.row].event_home_team
             cell.upcomingEventAwayTeamNameLabel.text = upcomingEventsArray?[indexPath.row].event_away_team
@@ -208,19 +221,38 @@ extension LeagueDetailsViewController : UICollectionViewDataSource {
             return cell
             
         case LatestResultsCollectionView :
+           
+            
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LatestResultCollectionViewCell", for: indexPath) as! LatestResultCollectionViewCell
-            cell.eventHomeTeamImageView.kf.setImage(with: URL(string:latestReultsArray?[indexPath.row].home_team_logo ?? "" ),placeholder: UIImage(systemName:"slowmo"))
-            cell.eventAwayTeamImageView.kf.setImage(with: URL(string:latestReultsArray?[indexPath.row].away_team_logo ?? "" ),placeholder: UIImage(systemName:"slowmo"))
+            
+            if sportName == "basketball" {
+                cell.eventHomeTeamImageView.kf.indicatorType = .activity
+                cell.eventHomeTeamImageView.kf.setImage(with: URL(string:latestReultsArray?[indexPath.row].event_home_team_logo ?? "" ),placeholder: UIImage(systemName:"exclamationmark.circle.fill"))
+                cell.eventAwayTeamImageView.kf.indicatorType = .activity
+                cell.eventAwayTeamImageView.kf.setImage(with: URL(string:latestReultsArray?[indexPath.row].event_away_team_logo ?? "" ),placeholder: UIImage(systemName:"exclamationmark.circle.fill"))
+            }else{
+                
+                cell.eventHomeTeamImageView.kf.indicatorType = .activity
+                cell.eventHomeTeamImageView.kf.setImage(with: URL(string:latestReultsArray?[indexPath.row].home_team_logo ?? "" ),placeholder: UIImage(systemName:"exclamationmark.circle.fill"))
+                cell.eventAwayTeamImageView.kf.indicatorType = .activity
+                cell.eventAwayTeamImageView.kf.setImage(with: URL(string:latestReultsArray?[indexPath.row].away_team_logo ?? "" ),placeholder: UIImage(systemName:"exclamationmark.circle.fill"))
+                
+            }
             cell.eventHomeTeamNameLabel.text = latestReultsArray?[indexPath.row].event_home_team
             cell.eventAwayTeamNameLabel.text = latestReultsArray?[indexPath.row].event_away_team
             cell.eventFinalResultLabel.text = latestReultsArray?[indexPath.row].event_final_result
+            cell.eventDataLabel.text = latestReultsArray?[indexPath.row].event_date
             return cell
             
         case TeamsCollectionView :
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeamCollectionViewCell", for: indexPath) as! TeamCollectionViewCell
-            cell.teamImageView.kf.setImage(with: URL(string:teamsArray?[indexPath.row].team_logo ?? "" ),placeholder: UIImage(systemName:"slowmo"))
+            cell.teamImageView.kf.indicatorType = .activity
+            cell.teamImageView.kf.setImage(with: URL(string:teamsArray?[indexPath.row].team_logo ?? "" ),placeholder: UIImage(systemName:"exclamationmark.circle.fill"))
+            cell.teamImageView.layer.cornerRadius = cell.teamImageView.bounds.width/2
+            cell.teamImageView.layer.borderWidth = 2
+            cell.teamImageView.layer.borderColor = UIColor.gray.cgColor
             return cell
             
         default:
