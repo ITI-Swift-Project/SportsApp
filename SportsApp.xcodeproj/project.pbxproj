@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		27008C14A573CFAF0E614284 /* Pods_SportsApp_SportsAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9D75904C20856627DD04726 /* Pods_SportsApp_SportsAppUITests.framework */; };
+		2703E6A2299C2ECF00559178 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2703E6A1299C2ECF00559178 /* logo.png */; };
 		27076EBA299064AE00558619 /* TeamDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27076EB9299064AE00558619 /* TeamDetailsViewController.swift */; };
 		270AED4929906DE6005A50A2 /* UpcomingEventsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270AED4729906DE6005A50A2 /* UpcomingEventsCollectionViewCell.swift */; };
 		270AED4A29906DE6005A50A2 /* UpcomingEventsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 270AED4829906DE6005A50A2 /* UpcomingEventsCollectionViewCell.xib */; };
@@ -71,6 +72,7 @@
 /* Begin PBXFileReference section */
 		0A1F6BFD13CDF18D6CABC33D /* Pods-SportsAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportsAppTests.debug.xcconfig"; path = "Target Support Files/Pods-SportsAppTests/Pods-SportsAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		108463C1C8C01FD6D352B1B8 /* Pods-SportsApp-SportsAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportsApp-SportsAppUITests.release.xcconfig"; path = "Target Support Files/Pods-SportsApp-SportsAppUITests/Pods-SportsApp-SportsAppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		2703E6A1299C2ECF00559178 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		27076EB9299064AE00558619 /* TeamDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailsViewController.swift; sourceTree = "<group>"; };
 		270AED4729906DE6005A50A2 /* UpcomingEventsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingEventsCollectionViewCell.swift; sourceTree = "<group>"; };
 		270AED4829906DE6005A50A2 /* UpcomingEventsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpcomingEventsCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 				27930528298D637C004732D3 /* AppDelegate.swift */,
 				2793052A298D637C004732D3 /* SceneDelegate.swift */,
 				27930534298D637E004732D3 /* Assets.xcassets */,
+				2703E6A1299C2ECF00559178 /* logo.png */,
 				27930531298D637C004732D3 /* SportsApp.xcdatamodeld */,
 			);
 			path = Utilites;
@@ -441,6 +444,7 @@
 				27930538298D637E004732D3 /* LaunchScreen.storyboard in Resources */,
 				2754BC332999C39D008699E7 /* PlayerCollectionViewCell.xib in Resources */,
 				2784C1392991B6E400056A53 /* TeamCollectionViewCell.xib in Resources */,
+				2703E6A2299C2ECF00559178 /* logo.png in Resources */,
 				38E01B57298EB4D40044B1F2 /* TableViewCell.xib in Resources */,
 				2784C1332991AC8400056A53 /* LatestResultCollectionViewCell.xib in Resources */,
 				38484D53299351B100F813D9 /* SportsCollectionViewCell.xib in Resources */,
