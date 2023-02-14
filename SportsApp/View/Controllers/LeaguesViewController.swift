@@ -80,8 +80,8 @@ extension LeaguesViewController : UITableViewDataSource{
         let LeaguesTableViewCell = tableView.dequeueReusableCell(withIdentifier: "TableCell", for: indexPath) as! TableViewCell
         
         LeaguesTableViewCell.LeagueName.text = tableViewResponse![indexPath.row].league_name
-        
-        LeaguesTableViewCell.LeaugeLogo.kf.setImage(with: URL(string: tableViewResponse![indexPath.row].league_logo ?? ""),placeholder: UIImage(named: "loading"))
+        LeaguesTableViewCell.LeaugeLogo.kf.indicatorType = .activity
+        LeaguesTableViewCell.LeaugeLogo.kf.setImage(with: URL(string: tableViewResponse![indexPath.row].league_logo ?? ""),placeholder: UIImage(systemName:"exclamationmark.circle.fill"))
         
         LeaguesTableViewCell.LeaugeLogo.layer.cornerRadius = 37
         LeaguesTableViewCell.LeaugeLogo.layer.borderWidth = 5

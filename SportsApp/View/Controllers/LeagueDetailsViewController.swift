@@ -115,9 +115,15 @@ class LeagueDetailsViewController: UIViewController {
     }
     
     @objc func pressedFavourite() {
+        
         if viewModel.favouriteState {
-            viewModel.deleteFromFavourite(leagueId:leagueID! )
-            self.navigationItem.rightBarButtonItem?.tintColor = UIColor(named:"mygrey")
+            let alert : UIAlertController = UIAlertController(title: "Delete League", message: "Are you sure you want to delete this league?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Yes", style: .default , handler: { [self]action in
+                viewModel.deleteFromFavourite(leagueId:leagueID! )
+                self.navigationItem.rightBarButtonItem?.tintColor = UIColor(named:"mygrey")
+            }))
+            alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+            self.present(alert, animated: true , completion: nil)
         }else{
             viewModel.addToFavourite(leagueData: FavouriteLeagueData(league_key: leagueID!, league_name: leagueName! , league_logo: leagueLogo ?? "" ), sportName: sportName ?? "")
             navigationItem.rightBarButtonItem?.tintColor =  UIColor.systemYellow
