@@ -27,7 +27,7 @@ class TeamDetailsViewController: UIViewController {
         
         playersCollectionView.register(PlayerCollectionViewCell.nib(), forCellWithReuseIdentifier: "PlayerCollectionViewCell")
         
-        teamImageView.kf.setImage(with: URL(string:teamLogo ?? "" ),placeholder: UIImage(systemName:"slowmo"))
+        teamImageView.kf.setImage(with: URL(string:teamLogo ?? "" ),placeholder: UIImage(systemName:"exclamationmark.circle.fill"))
         teamNameLabel.text = teamName
         
         self.collectionViewStyle(on: playersCollectionView)
@@ -71,12 +71,15 @@ extension TeamDetailsViewController : UICollectionViewDataSource {
         cell.redCardsLabel.text =  " : \(players?[indexPath.row].player_red_cards ?? "")"
         cell.matchesLabel.text = "Matches : \(players?[indexPath.row].player_match_played ?? "")"
         cell.goalsLabel.text = "Goals : \(players?[indexPath.row].player_goals ?? "")"
-        //cell.layer.cornerRadius = 115/2
+
         cell.layer.borderWidth = 2
         cell.layer.borderColor = UIColor(named:"mycolor")?.cgColor
         
         
-        cell.playerImagView.kf.setImage(with: URL(string:players?[indexPath.row].player_image ?? "" ),placeholder: UIImage(systemName:"slowmo"))
+        cell.playerImagView.kf.setImage(with: URL(string:players?[indexPath.row].player_image ?? "" ),placeholder: UIImage(systemName:"exclamationmark.circle.fill"))
+        cell.playerImagView.layer.cornerRadius = cell.playerImagView.bounds.width/2
+        cell.playerImagView.layer.borderWidth = 2
+        cell.playerImagView.layer.borderColor = UIColor(named:"mycolor")?.cgColor
         
         
         return cell

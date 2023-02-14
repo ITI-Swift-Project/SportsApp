@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" id="lxE-0x-YdQ">
-                        <rect key="frame" x="28" y="10" width="115" height="115"/>
+                        <rect key="frame" x="27" y="10" width="115" height="115"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="lxE-0x-YdQ" secondAttribute="height" multiplier="1:1" id="AfJ-cj-gb5"/>
@@ -50,7 +50,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PGA-pm-6SX">
-                        <rect key="frame" x="159" y="11" width="206" height="21"/>
+                        <rect key="frame" x="333" y="11" width="32" height="21"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -79,8 +79,9 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ncb-14-OTG">
+                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ncb-14-OTG">
                         <rect key="frame" x="159" y="127" width="23" height="34"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                     </view>
                 </subviews>
@@ -88,11 +89,9 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <color key="backgroundColor" red="0.74901960779999999" green="0.76470588240000004" blue="0.72941176470000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="ncb-14-OTG" firstAttribute="top" secondItem="eli-yX-Wko" secondAttribute="bottom" constant="5" id="1X0-Ax-Zdh"/>
                 <constraint firstItem="yy5-ay-WYF" firstAttribute="top" secondItem="Br2-Gc-cju" secondAttribute="bottom" constant="1" id="6y8-HI-I8M"/>
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="PGA-pm-6SX" secondAttribute="trailing" constant="20" id="BAK-9J-Ugg"/>
                 <constraint firstItem="sfL-OG-USU" firstAttribute="top" secondItem="lxE-0x-YdQ" secondAttribute="bottom" constant="11" id="BW1-8d-dDD"/>
-                <constraint firstItem="lxE-0x-YdQ" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.298701" id="E9l-6o-HwA"/>
                 <constraint firstItem="eli-yX-Wko" firstAttribute="leading" secondItem="lxE-0x-YdQ" secondAttribute="trailing" constant="16" id="FyY-pD-ebN"/>
                 <constraint firstAttribute="top" secondItem="lxE-0x-YdQ" secondAttribute="top" constant="-10" id="GFD-CA-C2W"/>
                 <constraint firstItem="jM3-ha-l46" firstAttribute="top" secondItem="PGA-pm-6SX" secondAttribute="bottom" constant="1" id="HRj-6t-ibm"/>
