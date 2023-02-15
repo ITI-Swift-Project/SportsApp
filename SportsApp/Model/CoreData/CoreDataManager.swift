@@ -29,7 +29,6 @@ class CoreDataManager {
     }
     
     private init (){
-        
         managedContext = appDelegate.persistentContainer.viewContext
         entity = NSEntityDescription.entity(forEntityName: "LeaguesCoreData", in: managedContext)
     }

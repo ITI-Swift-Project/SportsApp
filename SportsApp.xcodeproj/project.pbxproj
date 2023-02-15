@@ -187,7 +187,7 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
-		2754BC342999E06B008699E7 /* Cells */ = {
+		2754BC342999E06B008699E7 /* Xib */ = {
 			isa = PBXGroup;
 			children = (
 				38484D51299351B100F813D9 /* SportsCollectionViewCell.xib */,
@@ -197,7 +197,7 @@
 				2784C1312991AC8400056A53 /* LatestResultCollectionViewCell.xib */,
 				2754BC312999C39D008699E7 /* PlayerCollectionViewCell.xib */,
 			);
-			path = Cells;
+			path = Xib;
 			sourceTree = "<group>";
 		};
 		2793051C298D637C004732D3 = {
@@ -225,8 +225,8 @@
 			children = (
 				27930539298D637E004732D3 /* Info.plist */,
 				2793055E298DC1EB004732D3 /* Utilites */,
-				2793055C298DC1C6004732D3 /* View */,
 				2793055B298DC1BF004732D3 /* Model */,
+				2793055C298DC1C6004732D3 /* View */,
 				2793055D298DC1D1004732D3 /* ViewModel */,
 				27930541298D637E004732D3 /* SportsAppTests */,
 				2793054B298D637E004732D3 /* SportsAppUITests */,
@@ -260,8 +260,8 @@
 				2784C17D299582AF00056A53 /* UpcomingEvent.swift */,
 				2784C17E299582AF00056A53 /* LatestResults.swift */,
 				2784C17F299582AF00056A53 /* Teams.swift */,
-				383D5D47298F51CB0093D60B /* Leagues.swift */,
 				383D5D49298F51DB0093D60B /* LeaguesDetails.swift */,
+				383D5D47298F51CB0093D60B /* Leagues.swift */,
 				2754BC2229974C6B008699E7 /* FavouriteLeagueData.swift */,
 				2754BC1F2997499E008699E7 /* CoreData */,
 				383D5D4B298F53E70093D60B /* Services */,
@@ -275,7 +275,7 @@
 				2793052E298D637C004732D3 /* Main.storyboard */,
 				2752A0092999E1D400D747D4 /* SecondStoryBoard.storyboard */,
 				27930536298D637E004732D3 /* LaunchScreen.storyboard */,
-				2754BC342999E06B008699E7 /* Cells */,
+				2754BC342999E06B008699E7 /* Xib */,
 				2793055F298DC21B004732D3 /* Controllers */,
 			);
 			path = View;
