@@ -7,8 +7,7 @@
 
 import Foundation
 
-class ViewModel
-{
+class ViewModel {
     
     var bindResultToViewController : ( ()->() ) = {}
     
@@ -26,6 +25,7 @@ class ViewModel
         
     }
 //MARK: - Fetching Data to LeagueDetailsViewController
+    
     var bindUpcoimgEventsResultToLeaguesDetailsViewController : (()->()) = {}
     var bindLatestResultsToLeaguesDetailsViewController : (()->()) = {}
     var bindTeamsDataResultToLeaguesDetailsViewController : (()->()) = {}
@@ -103,12 +103,10 @@ class ViewModel
         }
         
     func addToFavourite(leagueData : FavouriteLeagueData, sportName : String)  {
-            
+        
         database.saveToCoreData(favourite: FavouriteLeagueData(league_key: leagueData.league_key, league_name: leagueData.league_name, league_logo: leagueData.league_logo), sportName: sportName)
             favouriteState = true
-            
         }
-        
 }
 
 

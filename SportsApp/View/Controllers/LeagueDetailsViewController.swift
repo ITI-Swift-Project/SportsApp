@@ -1,9 +1,8 @@
-//
+
 //  LeagueDetailsViewController.swift
 //  SportsApp
 //
 //  Created by Salma on 05/02/2023.
-//
 
 import UIKit
 import Kingfisher
@@ -22,10 +21,10 @@ class LeagueDetailsViewController: UIViewController {
     var leagueID : Int?
     var leagueLogo : String?
     var leagueName : String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("sport : \(sportName ?? "football") , \(leagueID ?? 4 ) \n")
         let dispatchGroup = DispatchGroup()
         UpcomingEventsCollectionView.delegate = self
         UpcomingEventsCollectionView.dataSource = self
@@ -49,11 +48,10 @@ class LeagueDetailsViewController: UIViewController {
         dispatchGroup.enter()
         viewModel?.getUpcomingEventsData(sportName: sportName ?? "football" , leagueID: leagueID ?? 4)
         dispatchGroup.enter()
-
         viewModel?.getLatestEventsData(sportName: sportName ?? "football" , leagueID: leagueID ?? 4)
         dispatchGroup.enter()
-
         viewModel?.getTeamsData(sportName: sportName ?? "football" , leagueID: leagueID ?? 4)
+        
         viewModel?.bindUpcoimgEventsResultToLeaguesDetailsViewController = { () in
             self.renderUpcomingEventsCollectionView()
             dispatchGroup.leave()
@@ -125,9 +123,9 @@ class LeagueDetailsViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
             self.present(alert, animated: true , completion: nil)
         }else{
-            viewModel.addToFavourite(leagueData: FavouriteLeagueData(league_key: leagueID!, league_name: leagueName! , league_logo: leagueLogo ?? "" ), sportName: sportName ?? "")
+            viewModel.addToFavourite(leagueData: FavouriteLeagueData(league_key: leagueID!, league_name: leagueName ?? "" , league_logo: leagueLogo ?? "" ), sportName: sportName ?? "")
             navigationItem.rightBarButtonItem?.tintColor =  UIColor.systemYellow
-            
+    
         }
         
     }
@@ -219,7 +217,6 @@ extension LeagueDetailsViewController : UICollectionViewDataSource {
                 cell.upcomingEventAwayTeamImageView.kf.setImage(with: URL(string: upcomingEventsArray?[indexPath.row].away_team_logo ?? ""),placeholder: UIImage(systemName:"exclamationmark.circle.fill"))
             }
 
-            
             cell.upcomingEventHomeTeamNameLabel.text = upcomingEventsArray?[indexPath.row].event_home_team
             cell.upcomingEventAwayTeamNameLabel.text = upcomingEventsArray?[indexPath.row].event_away_team
             cell.upcomingEventDateLabel.text = upcomingEventsArray?[indexPath.row].event_date
@@ -228,8 +225,6 @@ extension LeagueDetailsViewController : UICollectionViewDataSource {
             
         case LatestResultsCollectionView :
            
-            
-            
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LatestResultCollectionViewCell", for: indexPath) as! LatestResultCollectionViewCell
             
             if sportName == "basketball" {
