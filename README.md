@@ -11,14 +11,24 @@ The current version is working with Xcode Version Xcode 13. If you are using dif
 
 ## Screenshots
 
+![1](https://user-images.githubusercontent.com/87352168/218867282-b2f7699a-d122-4b37-a8d6-918e6ec41408.png)
+![2](https://user-images.githubusercontent.com/87352168/218867378-264f3163-e84e-4194-915e-48df145cdc9d.png)
+![3](https://user-images.githubusercontent.com/87352168/218867472-7dcceb05-df10-4fa0-acf0-e163b2e7b00b.png)
+![4](https://user-images.githubusercontent.com/87352168/218867612-8024ad37-464a-4f32-abfc-afddba15c082.png)
+![5](https://user-images.githubusercontent.com/87352168/218867763-eb6fd870-0887-435d-bcfc-bfbd3b675d8c.png)
+
 
 ## Features
-** Sports App
+
+**Sports App
 
 * MVVM 
 * SOLID
 * Core Data
 * Unit Tests
+* Alamofire
+* kingfisher
+* reachability
 
 
 ## How to build
@@ -44,15 +54,11 @@ $ open "SportsApp.xcworkspace"
 
 4) Sign up on (https://allsportsapi.com/) to get an appid
 
-```bash
-$ mkdir .access_tokens
-$ echo "your-openweathermap-appid" > .access_tokens/openweathermap
-```
-*Please replace "your-openweathermap-appid" with your actual appid key.*
+*Please replace "your-allsportsapi-appid" with your actual appid key.*
  
 5) Compile and run the app in your simulator
 
-6) If you don't see any data, please check "Simulator" -> "Debug" -> "Location" to change the location.
+6) If you don't see any data, please check "Schema" -> SportsApp
 
 # Requirements
 
