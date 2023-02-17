@@ -71,7 +71,7 @@ class FavouritesViewController: UIViewController {
                 {
                     Tennisarray.append(league)
                 }
-                    
+                
             }
         }else{
             Footballarray = []
@@ -196,9 +196,10 @@ extension FavouritesViewController : UITableViewDataSource
         
         let alert : UIAlertController = UIAlertController(title: "Delete League", message: "Are you sure you want to delete this league?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Yes", style: .default , handler: { [self]action in
-            switch indexPath.section {
+            switch (indexPath.section) {
+                
             case 0 :
-                FavouriteViewModel?.deleteFromFavourite(leagueId: (FavouriteLeagues?[indexPath.row].value(forKey: "league_key")as? Int ?? 0))
+                FavouriteViewModel?.deleteFromFavourite(leagueId: (Footballarray[indexPath.row].value(forKey: "league_key")as? Int ?? 0))
                 FavouriteLeagues = FavouriteViewModel?.database.fetchFormCoreData()
                 if let tabItems = tabBarController?.tabBar.items {
                     if FavouriteViewModel?.database.fetchFormCoreData()?.count == 0 {
@@ -210,7 +211,7 @@ extension FavouritesViewController : UITableViewDataSource
                     tabItem.badgeValue = String(count)
                 }
             case 1 :
-                FavouriteViewModel?.deleteFromFavourite(leagueId: (FavouriteLeagues?[indexPath.row].value(forKey: "league_key")as? Int ?? 0))
+                FavouriteViewModel?.deleteFromFavourite(leagueId: (Basketballarray[indexPath.row].value(forKey: "league_key")as? Int ?? 0))
                 FavouriteLeagues = FavouriteViewModel?.database.fetchFormCoreData()
                 if let tabItems = tabBarController?.tabBar.items {
                     if FavouriteViewModel?.database.fetchFormCoreData()?.count == 0 {
@@ -222,7 +223,7 @@ extension FavouritesViewController : UITableViewDataSource
                     tabItem.badgeValue = String(count)
                 }
             case 2 :
-                FavouriteViewModel?.deleteFromFavourite(leagueId: (FavouriteLeagues?[indexPath.row].value(forKey: "league_key")as? Int ?? 0))
+                FavouriteViewModel?.deleteFromFavourite(leagueId: (Cricketarray[indexPath.row].value(forKey: "league_key")as? Int ?? 0))
                 FavouriteLeagues = FavouriteViewModel?.database.fetchFormCoreData()
                 if let tabItems = tabBarController?.tabBar.items {
                     if FavouriteViewModel?.database.fetchFormCoreData()?.count == 0 {
@@ -234,7 +235,7 @@ extension FavouritesViewController : UITableViewDataSource
                     tabItem.badgeValue = String(count)
                 }
             case 3 :
-                FavouriteViewModel?.deleteFromFavourite(leagueId: (FavouriteLeagues?[indexPath.row].value(forKey: "league_key")as? Int ?? 0))
+                FavouriteViewModel?.deleteFromFavourite(leagueId: (Tennisarray[indexPath.row].value(forKey: "league_key")as? Int ?? 0))
                 FavouriteLeagues = FavouriteViewModel?.database.fetchFormCoreData()
                 if let tabItems = tabBarController?.tabBar.items {
                     if FavouriteViewModel?.database.fetchFormCoreData()?.count == 0 {
