@@ -2,13 +2,14 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cIW-SF-ych">
     <device id="retina6_72" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Favourites View Controller-->
+        <!--Favourites-->
         <scene sceneID="y19-dV-UpX">
             <objects>
                 <viewController storyboardIdentifier="Favourites" id="k8d-C0-w3q" customClass="FavouritesViewController" customModule="SportsApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -22,15 +23,15 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6y6-5g-0WA"/>
-                        <color key="backgroundColor" red="0.74901960779999999" green="0.76470588240000004" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.19607841970000001" green="0.24313727020000001" blue="0.270588249" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="6y6-5g-0WA" firstAttribute="bottom" secondItem="UFS-IW-ck5" secondAttribute="bottom" id="6HY-yj-uwv"/>
+                            <constraint firstAttribute="bottom" secondItem="UFS-IW-ck5" secondAttribute="bottom" constant="83" id="6HY-yj-uwv"/>
                             <constraint firstItem="UFS-IW-ck5" firstAttribute="top" secondItem="6y6-5g-0WA" secondAttribute="top" id="lBd-EZ-GAF"/>
                             <constraint firstItem="UFS-IW-ck5" firstAttribute="leading" secondItem="6y6-5g-0WA" secondAttribute="leading" constant="8" id="pcB-R9-Clb"/>
                             <constraint firstItem="6y6-5g-0WA" firstAttribute="trailing" secondItem="UFS-IW-ck5" secondAttribute="trailing" constant="8" id="z9u-6n-xbD"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Yys-mN-dzj"/>
+                    <navigationItem key="navigationItem" title="Favourites" id="Yys-mN-dzj"/>
                     <connections>
                         <outlet property="FavouritesTableView" destination="UFS-IW-ck5" id="fcu-J5-KlO"/>
                     </connections>
@@ -85,7 +86,7 @@
             </objects>
             <point key="canvasLocation" x="100.46511627906976" y="-487.33905579399146"/>
         </scene>
-        <!--Leagues View Controller-->
+        <!--Leagues-->
         <scene sceneID="G5S-R7-Zg5">
             <objects>
                 <viewController storyboardIdentifier="League" id="xPx-l5-hUj" customClass="LeaguesViewController" customModule="SportsApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -97,6 +98,15 @@
                                 <rect key="frame" x="8" y="0.0" width="414" height="898"/>
                                 <color key="separatorColor" red="0.20784313730000001" green="0.30980392159999998" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexBackgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search For League" id="cAJ-Ll-7Wj">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <color key="barTintColor" name="mygrey"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="xPx-l5-hUj" id="QJ9-pd-0do"/>
+                                    </connections>
+                                </searchBar>
                                 <connections>
                                     <outlet property="dataSource" destination="xPx-l5-hUj" id="kgW-LU-SF0"/>
                                     <outlet property="delegate" destination="xPx-l5-hUj" id="rRs-Mz-J4B"/>
@@ -112,9 +122,10 @@
                             <constraint firstItem="ruu-lz-rsD" firstAttribute="bottom" secondItem="Bfo-7g-lVY" secondAttribute="bottom" id="Ydu-qG-Ofs"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="wcU-IO-Nsx"/>
+                    <navigationItem key="navigationItem" title="Leagues" id="wcU-IO-Nsx"/>
                     <connections>
                         <outlet property="LeaguesTableView" destination="Bfo-7g-lVY" id="M2F-Zn-FZ5"/>
+                        <outlet property="leagueSearchBar" destination="cAJ-Ll-7Wj" id="Ava-t0-GkW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FWl-Zi-nZ9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -160,7 +171,8 @@
                         <rect key="frame" x="0.0" y="59" width="430" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.1843137255" green="0.24313725489999999" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="barTintColor" red="0.66274509800000003" green="0.67450980390000004" blue="0.66274509800000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" name="mygrey"/>
+                        <color key="barTintColor" name="mygrey"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" name="mygrey"/>
                         </textAttributes>
@@ -173,11 +185,14 @@
                                 <color key="textColor" name="mygrey"/>
                             </textAttributes>
                             <textAttributes key="largeTitleTextAttributes">
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" name="mygrey"/>
                             </textAttributes>
                         </navigationBarAppearance>
                         <navigationBarAppearance key="scrollEdgeAppearance">
                             <color key="backgroundColor" red="0.1843137255" green="0.24313725489999999" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <textAttributes key="titleTextAttributes">
+                                <color key="textColor" name="mygrey"/>
+                            </textAttributes>
                         </navigationBarAppearance>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -189,23 +204,28 @@
             </objects>
             <point key="canvasLocation" x="-825.19083969465646" y="-487.32394366197184"/>
         </scene>
-        <!--Favourites-->
+        <!--Navigation Controller-->
         <scene sceneID="o1u-Aq-XAV">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="h50-2T-g6w" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favourites" image="star.fill" catalog="system" id="p10-NZ-Q11"/>
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="p10-NZ-Q11"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="HRV-dW-aON">
                         <rect key="frame" x="0.0" y="59" width="430" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="mygrey"/>
+                        <color key="barTintColor" name="mygrey"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" name="mygrey"/>
+                        </textAttributes>
                         <navigationBarAppearance key="standardAppearance">
                             <color key="backgroundColor" red="0.1843137255" green="0.24313725489999999" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <textAttributes key="titleTextAttributes">
-                                <color key="textColor" red="0.1843137255" green="0.24313725489999999" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" name="mygrey"/>
                             </textAttributes>
-                        </navigationBarAppearance>
-                        <navigationBarAppearance key="scrollEdgeAppearance">
-                            <color key="backgroundColor" red="0.1843137255" green="0.24313725489999999" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <textAttributes key="largeTitleTextAttributes">
+                                <color key="textColor" name="mygrey"/>
+                            </textAttributes>
                         </navigationBarAppearance>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -225,6 +245,15 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kV0-qp-jSc">
                         <rect key="frame" x="0.0" y="59" width="430" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <navigationBarAppearance key="standardAppearance"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -239,7 +268,6 @@
     <color key="tintColor" name="mygrey"/>
     <resources>
         <image name="figure.disc.sports" catalog="system" width="128" height="108"/>
-        <image name="star.fill" catalog="system" width="128" height="116"/>
         <namedColor name="mygrey">
             <color red="0.74900001287460327" green="0.76499998569488525" blue="0.72899997234344482" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>

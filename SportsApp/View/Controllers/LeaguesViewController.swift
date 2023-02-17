@@ -14,11 +14,15 @@ class LeaguesViewController: UIViewController {
     var sporName : String?
 
     var tableViewResponse : [LeaguesDetails]?
+    var tempArray : [LeaguesDetails]?
     var LeaugeViewModel : ViewModel?
     
+    @IBOutlet weak var leagueSearchBar: UISearchBar!
     @IBOutlet weak var LeaguesTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        leagueSearchBar.delegate = self
         
         LeaugeViewModel = ViewModel()
         
@@ -26,7 +30,9 @@ class LeaguesViewController: UIViewController {
         
         LeaugeViewModel?.bindResultToViewController = { () in
             DispatchQueue.main.async { [self] in
-                self.tableViewResponse = LeaugeViewModel?.newData
+                
+                self.tempArray = LeaugeViewModel?.newData
+                self.tableViewResponse = self.tempArray
                 self.LeaguesTableView.reloadData()
             }
            
@@ -39,12 +45,25 @@ class LeaguesViewController: UIViewController {
         LeaguesTableView.dataSource = self
     
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let tabItems = tabBarController?.tabBar.items {
+            if LeaugeViewModel?.database.fetchFormCoreData()?.count == 0 {
+                let tabItem = tabItems[1]
+                tabItem.badgeValue = ""
+            }
+            let tabItem = tabItems[1]
+            let count = LeaugeViewModel?.database.fetchFormCoreData()?.count ?? 0
+            tabItem.badgeValue = String(count)
+        }
+    }
 }
 
 
+//MARK: - Leagues Table View Delegate
+
 extension LeaguesViewController : UITableViewDelegate
 {
-   
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let SecondStoryBoardObj = UIStoryboard(name: "SecondStoryBoard", bundle: nil)
         
@@ -69,7 +88,6 @@ extension LeaguesViewController : UITableViewDelegate
     
 }
 
-
 extension LeaguesViewController : UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -89,5 +107,24 @@ extension LeaguesViewController : UITableViewDataSource{
         LeaguesTableViewCell.LeagueName.layer.cornerRadius = 10
         LeaguesTableViewCell.LeagueName.layer.masksToBounds = true
         return LeaguesTableViewCell
+    }
+}
+
+
+//MARK: - Search Bar
+extension LeaguesViewController : UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        tableViewResponse = []
+        
+        if searchText == "" {
+            tableViewResponse = tempArray
+        }
+        for league in tempArray! {
+            
+            if league.league_name!.uppercased().contains(searchText.uppercased()){
+                tableViewResponse?.append(league)
+            }
+        }
+        self.LeaguesTableView.reloadData()
     }
 }

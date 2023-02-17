@@ -164,6 +164,18 @@ class LeagueDetailsViewController: UIViewController {
             cv.layer.masksToBounds = true
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let tabItems = tabBarController?.tabBar.items {
+            if viewModel?.database.fetchFormCoreData()?.count == 0 {
+                let tabItem = tabItems[1]
+                tabItem.badgeValue = ""
+            }
+            let tabItem = tabItems[1]
+            let count = viewModel?.database.fetchFormCoreData()?.count ?? 0
+            tabItem.badgeValue = String(count)
+        }
+    }
 }
 
 

@@ -12,6 +12,7 @@ class SportsViewController: UIViewController {
     var arrayofimages : [UIImage] = []
     var sportnames : [String] = []
     var urlsports : [String] = ["football","basketball","cricket","tennis"]
+    var viewModel : ViewModel?
     
     @IBOutlet weak var SportsViewCollection: UICollectionView!
     
@@ -19,6 +20,7 @@ class SportsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewModel = ViewModel()
         let nib = UINib(nibName: "SportsCollectionViewCell", bundle: nil)
         SportsViewCollection.register(nib, forCellWithReuseIdentifier: "SportsCell")
         
@@ -42,6 +44,21 @@ class SportsViewController: UIViewController {
         sportnames.append("Tennis")
         
         CollectionViewBackground.image = UIImage(named: "Sports")
+       
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        
+        if let tabItems = tabBarController?.tabBar.items {
+            if viewModel?.database.fetchFormCoreData()?.count == 0 {
+                let tabItem = tabItems[1]
+                tabItem.badgeValue = ""
+            }
+            let tabItem = tabItems[1]
+            let count = viewModel?.database.fetchFormCoreData()?.count ?? 0
+            tabItem.badgeValue = String(count)
+        }
+        
     }
 }
 

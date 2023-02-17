@@ -105,7 +105,7 @@
 		27D409B5299B130200E53B1A /* NetworkMangerTestes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMangerTestes.swift; sourceTree = "<group>"; };
 		27D409B7299B307C00E53B1A /* MockNetworkServicesManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkServicesManger.swift; sourceTree = "<group>"; };
 		27D409B9299B349600E53B1A /* MockNetworkServicesManagerTestes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkServicesManagerTestes.swift; sourceTree = "<group>"; };
-		383D5D47298F51CB0093D60B /* Leagues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Leagues.swift; path = SportsApp/View/Controllers/Leagues.swift; sourceTree = SOURCE_ROOT; };
+		383D5D47298F51CB0093D60B /* Leagues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Leagues.swift; path = SportsApp/Model/Leagues.swift; sourceTree = SOURCE_ROOT; };
 		383D5D49298F51DB0093D60B /* LeaguesDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LeaguesDetails.swift; path = SportsApp/View/Controllers/LeaguesDetails.swift; sourceTree = SOURCE_ROOT; };
 		383D5D4C298F540E0093D60B /* ApiData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiData.swift; sourceTree = "<group>"; };
 		38484D50299351B100F813D9 /* SportsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -261,8 +261,8 @@
 				2784C17E299582AF00056A53 /* LatestResults.swift */,
 				2784C17F299582AF00056A53 /* Teams.swift */,
 				383D5D49298F51DB0093D60B /* LeaguesDetails.swift */,
-				383D5D47298F51CB0093D60B /* Leagues.swift */,
 				2754BC2229974C6B008699E7 /* FavouriteLeagueData.swift */,
+				383D5D47298F51CB0093D60B /* Leagues.swift */,
 				2754BC1F2997499E008699E7 /* CoreData */,
 				383D5D4B298F53E70093D60B /* Services */,
 			);
