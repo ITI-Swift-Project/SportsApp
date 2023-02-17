@@ -123,7 +123,7 @@ class LeagueDetailsViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
             self.present(alert, animated: true , completion: nil)
         }else{
-            viewModel.addToFavourite(leagueData: FavouriteLeagueData(league_key: leagueID!, league_name: leagueName! , league_logo: leagueLogo ?? "" ), sportName: sportName ?? "")
+            viewModel.addToFavourite(leagueData: FavouriteLeagueData(league_key: leagueID!, league_name: leagueName ?? "" , league_logo: leagueLogo ?? "" ), sportName: sportName ?? "")
             navigationItem.rightBarButtonItem?.tintColor =  UIColor.systemYellow
     
         }
